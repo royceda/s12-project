@@ -14,7 +14,7 @@ PROMO( _ID, pourcentage, #catalogue);  //
 
 COMMANDE( _ID, #prod, quantité, #ncl); //
 
-CODE_PROMO( #ncl, #ncmd, pourcentage); ncmd=null ou une commande
+CODE_PROMO( #ncl, #ncmd, pourcentage); ncmd=null ou une commande //
 
 EXPEDITION( _nliv, #nadr, date); //  
 
