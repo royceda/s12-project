@@ -18,7 +18,7 @@ CREATE TABLE adresse(
        pays        VARCHAR(12) NOT NULL);
 
 -- 2
-CREATE TABLE menbre(
+CREATE TABLE membre(
        id        INTEGER UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
        nom       VARCHAR(12),
        prenom    VARCHAR(12),
