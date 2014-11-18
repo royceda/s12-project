@@ -60,7 +60,7 @@ CREATE TABLE commande(
        quantite INTEGER,
        nclient  INTEGER,
        FOREIGN KEY (nprod)   REFERENCES produit(id) ON DELETE CASCADE,
-       FOREIGN KEY (nclient) REFERENCES menbre(id) ON UPDATE CASCADE); 
+       FOREIGN KEY (nclient) REFERENCES menbre(id)  ON DELETE CASCADE); 
 
 -- 7   
 CREATE TABLE expedition(
