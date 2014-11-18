@@ -28,20 +28,20 @@ WHERE id>1;
 
 -- client
 
-INSERT INTO menbre (id, nom, prenom, telephone, adresse)
+INSERT INTO membre (id, nom, prenom, telephone, adresse)
        VALUES (1, 'brown', 'charlie',0676753452, 1);
 
 
-INSERT INTO menbre (nom, prenom, telephone)
+INSERT INTO membre (nom, prenom, telephone)
        VALUES ('VAN PEE', 'LINUS',0676753452);
 
 
-INSERT INTO menbre (nom, prenom, telephone)
+INSERT INTO membre (nom, prenom, telephone)
        VALUES ('shakur', 'tupac',0676753452);
 
 
 SELECT *
-FROM menbre;
+FROM membre;
  
 
 -- produit

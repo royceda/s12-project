@@ -60,7 +60,7 @@ CREATE TABLE commande(
        quantite INTEGER,
        nclient  INTEGER,
        FOREIGN KEY (nprod)   REFERENCES produit(id) ON DELETE CASCADE,
-       FOREIGN KEY (nclient) REFERENCES menbre(id)  ON DELETE CASCADE); 
+       FOREIGN KEY (nclient) REFERENCES membre(id)  ON DELETE CASCADE); 
 
 -- 7   
 CREATE TABLE expedition(
@@ -74,14 +74,14 @@ CREATE TABLE code_promo(
        ncl         INTEGER NOT NULL,
        pourcentage INTEGER NOT NULL,
        ncmd        INTEGER,    
-       FOREIGN KEY (ncl)  REFERENCES menbre(id)   ON DELETE CASCADE,
+       FOREIGN KEY (ncl)  REFERENCES membre(id)   ON DELETE CASCADE,
        FOREIGN KEY (ncmd) REFERENCES commande(id) ON DELETE CASCADE);
        
 
 -- Les contraintes specifiques 
 
 -- 9
-ALTER TABLE menbre ADD CONSTRAINT Cmail
+ALTER TABLE membre ADD CONSTRAINT Cmail
       CHECK (mail LIKE '%@%');
 
 -- 10
