@@ -1,3 +1,9 @@
+DROP DATABASE rrl_test;
+
+CREATE DATABASE rrl_test;
+
+USE rrl_test;
+
 -- phpMyAdmin SQL Dump
 -- version 4.1.12
 -- http://www.phpmyadmin.net
