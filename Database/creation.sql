@@ -15,7 +15,8 @@ CREATE TABLE adresse(
        ville        VARCHAR(12) NOT NULL,
        rue          VARCHAR(16) NOT NULL,
        code_postale INTEGER(5)  NOT NULL,
-       pays         VARCHAR(12) NOT NULL) CHARSET = UTF8;
+       pays         VARCHAR(12) NOT NULL) 
+       CHARSET = UTF8;
 
 -- 2
 CREATE TABLE membre(
@@ -45,7 +46,6 @@ CREATE TABLE promo(
        CHARSET = UTF8;
 
 -- 5
-
 CREATE TABLE produit(
        id          INTEGER NOT NULL UNIQUE PRIMARY KEY,
        designation VARCHAR(32),
@@ -58,7 +58,6 @@ CREATE TABLE produit(
        CHARSET = UTF8;
     
 -- 6
-
 CREATE TABLE commande(
        id       INTEGER NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,
        nprod    INTEGER,
@@ -90,7 +89,6 @@ CREATE TABLE identifiant(
        password VARCHAR(16),
        FOREIGN KEY (login) REFERENCES membre(mail) ON UPDATE CASCADE)
        CHARSET = UTF8;
-
 
 
 -- Les contraintes specifiques 
