@@ -1,21 +1,22 @@
 SHOW DATABASES;
 USE rrl_test;
 
+
 -- adresse
 
-INSERT INTO adresse (id, ville, rue, code_postal, pays) 
+INSERT INTO adresse (id, ville, rue, code_postale, pays) 
        VALUES (1,'LH', '12 rue du beau', 76000, 'FRANCE'); 
 
-INSERT INTO adresse (id, ville, rue, code_postal, pays) 
+INSERT INTO adresse (id, ville, rue, code_postale, pays) 
        values(2, 'PARIS', '12 rue Rivoli', 1000, 'FRANCE'); 
 
-INSERT INTO adresse (id, ville, rue, code_postal, pays) 
+INSERT INTO adresse (id, ville, rue, code_postale, pays) 
        values(3, 'BERLIN', '12 Munich', 9890, 'ALLEMAGNE'); 
 
-INSERT INTO adresse ( ville, rue, code_postal, pays) 
+INSERT INTO adresse ( ville, rue, code_postale, pays) 
        values( 'ROME', '12 Vatican', 1231, 'ITALIE'); 
 
-INSERT INTO adresse ( ville, rue, code_postal, pays) 
+INSERT INTO adresse ( ville, rue, code_postale, pays) 
        values( 'BORDEAUX', '12 rue Ste Catherine', 33000, 'FRANCE'); 
 
 
@@ -66,15 +67,15 @@ from catalogue;
 -- produit
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (1, 'NIKE LEBRON X', 'basket taille 45', 24, 180, 23, '2014-11-22');
+       VALUES (1, 'NIKE LEBRON X', 'basket taille 45', 3, 180, 23, '2014-11-22');
 
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (2, 'AIR JORDAN XXI PE', 'basket taille 42', 24, 240, 24, '2014-04-20');
+       VALUES (2, 'AIR JORDAN XXI PE', 'basket taille 42', 6, 240, 24, '2014-04-20');
 
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (3, 'NIKE KD VII', 'basket taille 40', 24, 110,23, NOW());
+       VALUES (3, 'NIKE KD VII', 'basket taille 40', 2, 110,23, NOW());
 
 select *
 from produit;
