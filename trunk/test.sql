@@ -23,39 +23,58 @@ SELECT *
 FROM adresse;
 
 
-DELETE FROM adresse 
-WHERE id>1;
-
 -- client
 
-INSERT INTO membre (id, nom, prenom, telephone, adresse)
-       VALUES (1, 'brown', 'charlie',0676753452, 1);
+INSERT INTO membre (id, nom, prenom, telephone, mail, adresse)
+       VALUES (1, 'brown', 'charlie',0676753452,'allo@gmail.ch', 1);
 
 
-INSERT INTO membre (nom, prenom, telephone)
-       VALUES ('VAN PEE', 'LINUS',0676753452);
+INSERT INTO membre (id,nom, prenom, telephone,mail, adresse)
+       VALUES (3,'VAN PEE', 'LINUS',0676753452,'aaaaaa@bb.fr', 3);
 
 
-INSERT INTO membre (nom, prenom, telephone)
-       VALUES ('shakur', 'tupac',0676753452);
-
+INSERT INTO membre (id, nom, prenom, telephone, mail, adresse)
+       VALUES (2,'shakur', 'tupac',0676753452,'bbbbb@licos.com', 2);
 
 SELECT *
 FROM membre;
  
+-- identifiant
+
+INSERT INTO identifiant (login, password)
+       VALUES ('allo@gmail.ch', 'blahblah');
+
+
+select * 
+from identifiant;
+
+-- catalogue
+
+INSERT INTO catalogue(id, nom, maj)
+       VALUES (23, 'SPORT', NOW());
+
+INSERT INTO catalogue(id, nom, maj)
+       VALUES (25, 'VILLE', NOW());
+
+INSERT INTO catalogue(id, nom, maj)
+       VALUES (24, 'CLASSE', NOW());
+
+select *
+from catalogue;
+
 
 -- produit
 
-INSERT INTO produit (id, designation, descriptif, disponible, prix)
-       VALUES (1, 'NIKE LEBRON X', 'basket taille 45', 24, 180);
+INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES (1, 'NIKE LEBRON X', 'basket taille 45', 24, 180, 23, '2014-11-22');
 
 
-INSERT INTO produit (id, designation, descriptif, disponible, prix)
-       VALUES (2, 'AIR JORDAN XXI PE', 'basket taille 42', 24, 240);
+INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES (2, 'AIR JORDAN XXI PE', 'basket taille 42', 24, 240, 24, '2014-04-20');
 
 
-INSERT INTO produit (id, designation, descriptif, disponible, prix)
-       VALUES (3, 'NIKE KD VII', 'basket taille 40', 24, 110);
+INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES (3, 'NIKE KD VII', 'basket taille 40', 24, 110,23, NOW());
 
 select *
 from produit;
@@ -91,3 +110,6 @@ WHERE nclient=2;
 
 DELETE FROM commande
 WHERE id>0;
+
+DELETE FROM adresse 
+WHERE id>10;
