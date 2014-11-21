@@ -93,7 +93,7 @@ INSERT INTO commande (nprod,quantite,nclient)
        VALUES (3, 2, 2);
 
 INSERT INTO commande (nprod,quantite,nclient)
-       VALUES (2, 3, 3);
+       VALUES (1, 3, 3);
 
 INSERT INTO commande (nprod,quantite,nclient)
        VALUES (3, 1, 2);
@@ -109,8 +109,8 @@ SELECT COUNT(*)
 FROM commande
 WHERE nclient=2;
 
-DELETE FROM commande
-WHERE id>0;
+-- DELETE FROM commande
+-- WHERE id>0;
 
 DELETE FROM adresse 
 WHERE id>10;
