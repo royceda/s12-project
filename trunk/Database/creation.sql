@@ -90,6 +90,17 @@ CREATE TABLE identifiant(
        FOREIGN KEY (login) REFERENCES membre(mail) ON UPDATE CASCADE)
        CHARSET = UTF8;
 
+-- 10
+CREATE TABLE avis(
+       nprod   INTEGER,
+       nclient INTEGER,
+       note    INTEGER,
+       comment VARCHAR(64),
+       CONSTRAINT Cnote CHECK (note < 5),
+       FOREIGN KEY (nprod)   REFERENCES produit(id) ON DELETE CASCADE,
+       FOREIGN KEY (nclient) REFERENCES membre(id)  ON DELETE CASCADE)
+       CHARSET = UTF8; 
+              
 
 -- Les contraintes specifiques 
 
