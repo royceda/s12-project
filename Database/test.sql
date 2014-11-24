@@ -69,13 +69,42 @@ from catalogue;
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
        VALUES (1, 'NIKE LEBRON X', 'basket taille 45', 3, 180, 23, '2014-11-22');
 
-
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (2, 'AIR JORDAN XXI PE', 'basket taille 42', 6, 240, 24, '2014-04-20');
-
+       VALUES (2,'AIR JORDAN XXI PE', 'basket taille 42', 6, 240, 24, '2014-04-20');
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
        VALUES (3, 'NIKE KD VII', 'basket taille 40', 2, 110,23, NOW());
+
+INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES (4, 'AIR JORDAN III', 'basket taille 40', 2, 110,23, NOW());
+
+INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES (5, 'AIR JORDAN VII', 'basket taille 42', 2, 110,23, NOW());
+
+INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES (6, 'AIR JORDAN X', 'basket taille 40', 2, 110,23, NOW());
+
+INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES (7, 'NIKE HYPPERFUSE 2014', 'basket taille 43', 2, 110,23, NOW());
+
+INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES (8, 'NIKE AIR ZOOM HYPERDUNK', 'basket taille 44', 2, 110,23, NOW());
+
+INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES (9,'NIKE LUNAR FLYNIT RED', 'basket taille 46', 2, 110,23, NOW());
+
+INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES (10, 'NIKE AIR FORCE ONE WHITE', 'basket taille 38', 2, 110,23, NOW());
+
+INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES (11, 'ADIDAS D-ROSE 4', 'basket taille 43', 2, 110,23, NOW());
+
+INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES (12, 'ADIDAS HOWARD II', 'basket taille 48', 2, 110,23, NOW());
+
+INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES (13, 'LOUBOUTIN RED/WHITE', 'basket taille 48', 2, 110,23, NOW());
+
 
 select *
 from produit;
