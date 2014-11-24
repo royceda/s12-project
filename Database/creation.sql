@@ -47,7 +47,7 @@ CREATE TABLE promo(
 
 -- 5
 CREATE TABLE produit(
-       id          INTEGER NOT NULL UNIQUE PRIMARY KEY,
+       id          INTEGER NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,
        designation VARCHAR(32),
        descriptif  VARCHAR(64),
        disponible  INTEGER,

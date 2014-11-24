@@ -5,9 +5,9 @@
 drop view plus_moins;
 
 CREATE VIEW plus_moins (ventes, nprod, designation) AS
-SELECT count(nprod) AS ventes, nprod, designation 
-FROM commande, produit
-WHERE produit.id = commande.nprod	        
+SELECT count(nprod) AS ventes, p.id as nprod, designation 
+FROM commande right outer join produit p
+ON p.id = commande.nprod	        
 GROUP BY nprod 
 ORDER BY ventes DESC;
 
@@ -19,9 +19,9 @@ FROM plus_moins;
 drop view moins_plus;
 
 CREATE VIEW moins_plus (ventes, nprod, designation) AS
-SELECT count(nprod) AS ventes, nprod, designation
-FROM commande, produit 
-WHERE produit.id = commande.nprod
+SELECT count(nprod) AS ventes, p.id AS nprod, designation
+FROM commande RIGHT OUTER JOIN produit p 
+ON p.id = commande.nprod
 GROUP BY nprod 
 ORDER BY ventes;
 
