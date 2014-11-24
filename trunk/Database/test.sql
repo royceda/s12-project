@@ -123,12 +123,38 @@ INSERT INTO commande (nprod,quantite,nclient)
 
 INSERT INTO commande (nprod,quantite,nclient)
        VALUES (1, 3, 3);
-
+ 
 INSERT INTO commande (nprod,quantite,nclient)
        VALUES (3, 1, 2);
 
 INSERT INTO commande (nprod,quantite,nclient)
        VALUES (1, 1, 2);
+
+INSERT INTO commande (nprod,quantite,nclient)
+       VALUES (9, 3, 1);
+
+INSERT INTO commande (nprod,quantite,nclient)
+       VALUES (6, 1, 2);
+
+INSERT INTO commande (nprod,quantite,nclient)
+       VALUES (10, 1, 2);
+
+INSERT INTO commande (nprod,quantite,nclient)
+       VALUES (3, 1, 2);
+
+INSERT INTO commande (nprod,quantite,nclient)
+       VALUES (10, 1, 2);
+
+INSERT INTO commande (nprod,quantite,nclient)
+       VALUES (7, 1, 3);
+
+INSERT INTO commande (nprod,quantite,nclient)
+       VALUES (7, 1, 2);
+
+INSERT INTO commande (nprod,quantite,nclient)
+       VALUES (7, 1, 1);
+
+
 
 
 SELECT *
