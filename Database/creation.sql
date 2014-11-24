@@ -53,7 +53,8 @@ CREATE TABLE produit(
        disponible  INTEGER,
        prix        INTEGER,
        catalogue   INTEGER,
-       date_add    DATE, 
+       date_add    DATE,
+       photo       VARCHAR(64), 
        FOREIGN KEY (catalogue) REFERENCES catalogue(id) ON UPDATE CASCADE)
        CHARSET = UTF8;
     
