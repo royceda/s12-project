@@ -41,17 +41,17 @@ FROM adresse;
 
 -- client
 
-INSERT INTO membre (id, nom, prenom, telephone, mail, adresse)
+INSERT INTO menbre (id, nom, prenom, telephone, mail, adresse)
        VALUES (1, 'brown', 'charlie', 0676753452, 'allo@gmail.ch', 1);
 
-INSERT INTO membre (id,nom, prenom, telephone,mail, adresse)
+INSERT INTO menbre (id,nom, prenom, telephone,mail, adresse)
        VALUES (3,'VAN PEE', 'LINUS', 0676753452, 'aaaaaa@bb.fr', 3);
 
-INSERT INTO membre (id, nom, prenom, telephone, mail, adresse)
+INSERT INTO menbre (id, nom, prenom, telephone, mail, adresse)
        VALUES (2,'shakur', 'tupac', 0676753452, 'bbbbb@licos.com', 2);
 
 SELECT *
-FROM membre;
+FROM menbre;
  
 -- identifiant
 
