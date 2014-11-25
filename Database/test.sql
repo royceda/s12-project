@@ -45,14 +45,13 @@ FROM membre;
 INSERT INTO identifiant (login, password)
        VALUES ('allo@gmail.ch', 'blahblah');
 
-
 select * 
 from identifiant;
 
 -- catalogue
 
 INSERT INTO catalogue(id, nom, maj)
-       VALUES (23, 'SPORT', NOW());
+       VALUES (23, 'SPORT', '2014-04-20');
 
 INSERT INTO catalogue(id, nom, maj)
        VALUES (25, 'VILLE', NOW());
@@ -82,28 +81,44 @@ INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, d
        VALUES (5, 'AIR JORDAN VII', 'basket taille 42', 2, 110,23, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (6, 'AIR JORDAN X', 'basket taille 40', 2, 110,23, NOW());
+       VALUES (6, 'AIR JORDAN X', 'basket taille 40', RAND(), 110,23, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (7, 'NIKE HYPPERFUSE 2014', 'basket taille 43', 2, 110,23, NOW());
+       VALUES (7, 'NIKE HYPPERFUSE 2014', 'basket taille 43', 12, 110,23, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (8, 'NIKE AIR ZOOM HYPERDUNK', 'basket taille 44', 2, 110,23, NOW());
+       VALUES (8, 'NIKE AIR ZOOM HYPERDUNK', 'basket taille 44', 20, 110,23, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (9,'NIKE LUNAR FLYNIT RED', 'basket taille 46', 2, 110,23, NOW());
+       VALUES (9,'NIKE LUNAR FLYNIT RED', 'basket taille 46', 8, 110, 21, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (10, 'NIKE AIR FORCE ONE WHITE', 'basket taille 38', 2, 110,23, NOW());
+       VALUES (10, 'NIKE AIR FORCE ONE WHITE', 'basket taille 38', 9, 110,23, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (11, 'ADIDAS D-ROSE 4', 'basket taille 43', 2, 110,23, NOW());
+       VALUES (11, 'ADIDAS D-ROSE 4', 'basket taille 43', 11, 110,23, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (12, 'ADIDAS HOWARD II', 'basket taille 48', 2, 110,23, NOW());
+       VALUES (12, 'ADIDAS HOWARD II', 'basket taille 48', 12, 110,23, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (13, 'LOUBOUTIN RED/WHITE', 'basket taille 48', 2, 110,23, NOW());
+       VALUES (13, 'LOUBOUTIN RED/WHITE', 'basket taille 44', 9, 985,23, NOW());
+
+INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES ('LOUBOUTIN BLACK/WHITE', 'basket taille 43', 6, 1010, 24, NOW());
+
+INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES ('LOUBOUTIN BLACK', 'basket taille 46', 5, 823, 24, NOW());
+
+INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES ('LOUBOUTIN ALL WHITE', 'basket taille 47', 12, 823, 24, NOW());
+
+INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES ('G.ZANOTII GOLD/WHITE', 'basket taille 43', 4, 800, 24, NOW());
+
+INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES ('G.ZANOTII GOLD/BLACK', 'basket taille 42', 7, 800, 24, NOW());
+
 
 
 select *
@@ -113,48 +128,46 @@ from produit;
 -- commande
 
 INSERT INTO commande (nprod,quantite,nclient)
-       VALUES (3, 1, 2);
+       VALUES (floor(RAND(16)*10),3, 2);
 
 INSERT INTO commande (nprod,quantite,nclient)
-       VALUES (2, 7, 1);
+       VALUES (floor(RAND(16)*10), 7, 1);
 
 INSERT INTO commande (nprod,quantite,nclient)
-       VALUES (3, 2, 2);
+       VALUES (floor(RAND(16)*10), 2, 2);
 
 INSERT INTO commande (nprod,quantite,nclient)
-       VALUES (1, 3, 3);
+       VALUES (floor(RAND(16)*10), 3, 3);
  
 INSERT INTO commande (nprod,quantite,nclient)
-       VALUES (3, 1, 2);
+       VALUES (floor(RAND(16)*10), 1, 2);
 
 INSERT INTO commande (nprod,quantite,nclient)
-       VALUES (1, 1, 2);
+       VALUES (floor(RAND(16)*10), 1, 2);
 
 INSERT INTO commande (nprod,quantite,nclient)
-       VALUES (9, 3, 1);
-
-INSERT INTO commande (nprod,quantite,nclient)
-       VALUES (6, 1, 2);
+       VALUES (floor(RAND(16)*10), 3, 1);
 
 INSERT INTO commande (nprod,quantite,nclient)
        VALUES (10, 1, 2);
 
 INSERT INTO commande (nprod,quantite,nclient)
-       VALUES (3, 1, 2);
+       VALUES (13, 1, 2);
+
+INSERT INTO commande (nprod,quantite,nclient)
+       VALUES (13, 1, 2);
 
 INSERT INTO commande (nprod,quantite,nclient)
        VALUES (10, 1, 2);
 
 INSERT INTO commande (nprod,quantite,nclient)
-       VALUES (7, 1, 3);
+       VALUES (16, 1, 3);
 
 INSERT INTO commande (nprod,quantite,nclient)
-       VALUES (7, 1, 2);
+       VALUES (14, 1, 2);
 
 INSERT INTO commande (nprod,quantite,nclient)
-       VALUES (7, 1, 1);
-
-
+       VALUES (floor(RAND(16)*154/10), 1, 1);
 
 
 SELECT *
