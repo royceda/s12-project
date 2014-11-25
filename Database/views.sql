@@ -45,7 +45,7 @@ drop view best_clients;
 
 CREATE VIEW best_clients (ncl, nom, prenom, nb_achats) AS
 SELECT cl.id as ncl, cl.nom as nom, cl.prenom as prenom, count(nclient) as nb_achats 
-FROM membre cl, commande c
+FROM menbre cl, commande c
 WHERE cl.id = c.nclient
 GROUP BY cl.id
 ORDER BY nb_achats desc;

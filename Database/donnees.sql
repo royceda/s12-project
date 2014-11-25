@@ -35,124 +35,162 @@ INSERT INTO adresse ( ville, rue, code_postale, pays)
        values( 'NICE', '12 Place Massenat', 06000, 'FRANCE'); 
 
 
-SELECT *
-FROM adresse;
-
-
 -- client
 
-INSERT INTO membre (id, nom, prenom, telephone, mail, adresse)
+INSERT INTO menbre (id, nom, prenom, telephone, mail, adresse)
        VALUES (1, 'Brown', 'Charlie', 0676753452, 'allo@gmail.ch', 1);
 
-INSERT INTO membre (id,nom, prenom, telephone,mail, adresse)
+INSERT INTO menbre (id,nom, prenom, telephone,mail, adresse)
        VALUES (2,'VAN PEE', 'LINUS', 0676753452, 'aaaaaa@bb.fr', 3);
 
-INSERT INTO membre (nom, prenom, telephone, mail, adresse)
+INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
        VALUES ('Shakur', 'Tupac', 0676753452, 'B.panther@licos.com', 2);
 
-INSERT INTO membre (nom, prenom, telephone, mail, adresse)
+INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
        VALUES ('Combs', 'Sean', 0676753452, 'DIDDY@licos.com', 7);
 
-INSERT INTO membre (nom, prenom, telephone, mail, adresse)
+INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
        VALUES ('Machiavel', 'Nicolas', 0676753452, 'N.Machiavel@licos.com', 9);
 
-INSERT INTO membre (nom, prenom, telephone, mail, adresse)
+INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
        VALUES ('Presley', 'Elvis', 0676753452, 'E.Presley@licos.com', 10);
 
-INSERT INTO membre (nom, prenom, telephone, mail, adresse)
-       VALUES ('Endrix', 'Jimmy', 0676753452, 'J.Endrix@licos.com', 4);
+INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
+       VALUES ('Endrix', 'Jimmy', 0676753452, 'J.Endrix@licos.com', 8);
 
+INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
+       VALUES ('Kant', 'Emmanuel', 0676753452, 'E.Kant@licos.com', 6);
 
-SELECT *
-FROM membre;
+INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
+       VALUES ('Bryant', 'Kobe', 0676753452, 'K.Bryant@aol.com', 8);
+
+INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
+       VALUES ('Wiggings', 'Andrew', 0676753452, 'A.Wiggings@licos.com', 4);
+
+INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
+       VALUES ('Benzema', 'Karim', 0676753452, 'K.benzema@aol.com', 5);
+
  
 -- identifiant
 
 INSERT INTO identifiant (login, password)
        VALUES ('allo@gmail.ch', 'blahblah');
 
-select * 
-from identifiant;
+INSERT INTO identifiant (login, password)
+       VALUES ('aaaaaa@bb.fr', 'blablabla');
+
+INSERT INTO identifiant (login, password)
+       VALUES ('B.panther@licos.com', 'blahblah');
+
+INSERT INTO identifiant (login, password)
+       VALUES ('DIDDY@licos.com', 'blahblah');
+
+INSERT INTO identifiant (login, password)
+       VALUES ('N.Machiavel@licos.com', 'blahblah');
+
+INSERT INTO identifiant (login, password)
+       VALUES ('E.Presley@licos.com', 'blahblah');
+
+INSERT INTO identifiant (login, password)
+       VALUES ('J.Endrix@licos.com', 'kakakakaka');
+
+INSERT INTO identifiant (login, password)
+       VALUES ('E.Kant@licos.com', 'kakakakaka');
+
+INSERT INTO identifiant (login, password)
+       VALUES ('K.Bryant@aol.com', 'kakakakaka');
+
+INSERT INTO identifiant (login, password)
+       VALUES ('A.Wiggings@licos.com', 'kakakakaka');
+
+INSERT INTO identifiant (login, password)
+       VALUES ('K.benzema@aol.com', 'kakakakaka');
+
+
 
 -- catalogue
 
 INSERT INTO catalogue(id, nom, maj)
-       VALUES (23, 'SPORT', '2014-04-20');
+       VALUES (1, 'CHAUSSURE', '2014-04-20');
 
 INSERT INTO catalogue(id, nom, maj)
-       VALUES (25, 'VILLE', NOW());
+       VALUES (2, 'VILLE', NOW());
 
 INSERT INTO catalogue(id, nom, maj)
-       VALUES (24, 'CLASSE', NOW());
+       VALUES (3, 'CLASSE', NOW());
 
-select *
-from catalogue;
+INSERT INTO catalogue(id, nom, maj)
+       VALUES (4, 'COSTUME', NOW());
+
+INSERT INTO catalogue( nom, maj)
+       VALUES ('CHEMISE', NOW());
+
+INSERT INTO catalogue(id, nom, maj)
+       VALUES ('PANTALON', NOW());
+
+INSERT INTO catalogue(id, nom, maj)
+       VALUES ('ACCESSOIRE', NOW());
+
 
 
 -- produit
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (1, 'NIKE LEBRON X', 'basket taille 45', 3, 180, 23, '2014-11-22');
+       VALUES (1, 'NIKE LEBRON X', 'basket taille 45', 3, 180, 1, '2014-11-22');
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (2,'AIR JORDAN XXI PE', 'basket taille 42', 6, 240, 24, '2014-04-20');
+       VALUES (2,'AIR JORDAN XXI PE', 'basket taille 42', 6, 240, 1, '2014-04-20');
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (3, 'NIKE KD VII', 'basket taille 40', 2, 110,23, NOW());
+       VALUES (3, 'NIKE KD VII', 'basket taille 40', 2, 110, 1, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (4, 'AIR JORDAN III', 'basket taille 40', 2, 110,23, NOW());
+       VALUES (4, 'AIR JORDAN III', 'basket taille 40', 2, 110, 1, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (5, 'AIR JORDAN VII', 'basket taille 42', 2, 110,23, NOW());
+       VALUES (5, 'AIR JORDAN VII', 'basket taille 42', 2, 110, 1, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (6, 'AIR JORDAN X', 'basket taille 40', RAND(), 110,23, NOW());
+       VALUES (6, 'AIR JORDAN X', 'basket taille 40', RAND(), 110, 1, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (7, 'NIKE HYPPERFUSE 2014', 'basket taille 43', 12, 110,23, NOW());
+       VALUES (7, 'NIKE HYPPERFUSE 2014', 'basket taille 43', 12, 110, 1, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (8, 'NIKE AIR ZOOM HYPERDUNK', 'basket taille 44', 25, 110,23, NOW());
+       VALUES (8, 'NIKE AIR ZOOM HYPERDUNK', 'basket taille 44', 25, 110, 1, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (9,'NIKE LUNAR FLYNIT RED', 'basket taille 46', 8, 110, 24, NOW());
+       VALUES (9,'NIKE LUNAR FLYNIT RED', 'basket taille 46', 8, 120, 1, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (10, 'NIKE AIR FORCE ONE WHITE', 'basket taille 38', 9, 110,23, NOW());
+       VALUES (10, 'NIKE AIR FORCE ONE WHITE', 'basket taille 38', 9, 110, 1, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (11, 'ADIDAS D-ROSE 4', 'basket taille 43', 11, 110,23, NOW());
+       VALUES (11, 'ADIDAS D-ROSE 4', 'basket taille 43', 11, 90, 1, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (12, 'ADIDAS HOWARD II', 'basket taille 48', 12, 110,23, NOW());
+       VALUES (12, 'ADIDAS HOWARD II', 'basket taille 48', 12, 110, 1, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (13, 'LOUBOUTIN RED/WHITE', 'basket taille 44', 9, 985,23, NOW());
+       VALUES (13, 'LOUBOUTIN RED/WHITE', 'basket taille 44', 9, 985, 1, NOW());
 
 INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES ('LOUBOUTIN BLACK/WHITE', 'basket taille 43', 6, 1010, 24, NOW());
+       VALUES ('LOUBOUTIN BLACK/WHITE', 'basket taille 43', 6, 1010, 1, NOW());
 
 INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES ('LOUBOUTIN BLACK', 'basket taille 46', 5, 823, 24, NOW());
+       VALUES ('LOUBOUTIN BLACK', 'basket taille 46', 5, 823, 1, NOW());
 
 INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES ('LOUBOUTIN ALL WHITE', 'basket taille 47', 12, 823, 24, NOW());
+       VALUES ('LOUBOUTIN ALL WHITE', 'basket taille 47', 12, 823, 1, NOW());
 
 INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES ('G.ZANOTI GOLD/WHITE', 'basket taille 43', 4, 800, 24, NOW());
+       VALUES ('G.ZANOTI GOLD/WHITE', 'basket taille 43', 4, 800, 1, NOW());
 
 INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES ('G.ZANOTI GOLD/BLACK', 'basket taille 42', 7, 800, 24, NOW());
-
-
-
-select *
-from produit;
+       VALUES ('G.ZANOTI GOLD/BLACK', 'basket taille 42', 7, 800, 1, NOW());
 
 
 -- commande
-
 INSERT INTO commande (nprod,quantite,nclient)
        VALUES (floor(RAND(16)*10),3, 2);
 
@@ -195,20 +233,10 @@ INSERT INTO commande (nprod,quantite,nclient)
 INSERT INTO commande (nprod,quantite,nclient)
        VALUES (floor(RAND(16)*154/10), 1, 1);
 
-INSERT INTO commande (nprod,quantite,nclient)
-       VALUES (floor(RAND()*17),1 ,floor(RAND()*7));
+-- promo catalogue
+
+INSERT INTO promo (id, catalogue, reduction, deadline)
+       VALUES (1, floor(RAND()*5), floor(RAND()*100), '2014-12-25');
 
 
 
-SELECT *
-FROM commande;
-
-SELECT COUNT(*)
-FROM commande
-WHERE nclient=2;
-
--- DELETE FROM commande
--- WHERE id>0;
-
-DELETE FROM adresse 
-WHERE id>10;
