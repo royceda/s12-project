@@ -42,13 +42,26 @@ FROM adresse;
 -- client
 
 INSERT INTO membre (id, nom, prenom, telephone, mail, adresse)
-       VALUES (1, 'brown', 'charlie', 0676753452, 'allo@gmail.ch', 1);
+       VALUES (1, 'Brown', 'Charlie', 0676753452, 'allo@gmail.ch', 1);
 
 INSERT INTO membre (id,nom, prenom, telephone,mail, adresse)
-       VALUES (3,'VAN PEE', 'LINUS', 0676753452, 'aaaaaa@bb.fr', 3);
+       VALUES (2,'VAN PEE', 'LINUS', 0676753452, 'aaaaaa@bb.fr', 3);
 
-INSERT INTO membre (id, nom, prenom, telephone, mail, adresse)
-       VALUES (2,'shakur', 'tupac', 0676753452, 'bbbbb@licos.com', 2);
+INSERT INTO membre (nom, prenom, telephone, mail, adresse)
+       VALUES ('Shakur', 'Tupac', 0676753452, 'B.panther@licos.com', 2);
+
+INSERT INTO membre (nom, prenom, telephone, mail, adresse)
+       VALUES ('Combs', 'Sean', 0676753452, 'DIDDY@licos.com', 7);
+
+INSERT INTO membre (nom, prenom, telephone, mail, adresse)
+       VALUES ('Machiavel', 'Nicolas', 0676753452, 'N.Machiavel@licos.com', 9);
+
+INSERT INTO membre (nom, prenom, telephone, mail, adresse)
+       VALUES ('Presley', 'Elvis', 0676753452, 'E.Presley@licos.com', 10);
+
+INSERT INTO membre (nom, prenom, telephone, mail, adresse)
+       VALUES ('Endrix', 'Jimmy', 0676753452, 'J.Endrix@licos.com', 4);
+
 
 SELECT *
 FROM membre;
@@ -100,10 +113,10 @@ INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, d
        VALUES (7, 'NIKE HYPPERFUSE 2014', 'basket taille 43', 12, 110,23, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (8, 'NIKE AIR ZOOM HYPERDUNK', 'basket taille 44', 20, 110,23, NOW());
+       VALUES (8, 'NIKE AIR ZOOM HYPERDUNK', 'basket taille 44', 25, 110,23, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES (9,'NIKE LUNAR FLYNIT RED', 'basket taille 46', 8, 110, 21, NOW());
+       VALUES (9,'NIKE LUNAR FLYNIT RED', 'basket taille 46', 8, 110, 24, NOW());
 
 INSERT INTO produit (id, designation, descriptif, disponible, prix, catalogue, date_add)
        VALUES (10, 'NIKE AIR FORCE ONE WHITE', 'basket taille 38', 9, 110,23, NOW());
@@ -127,10 +140,10 @@ INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_
        VALUES ('LOUBOUTIN ALL WHITE', 'basket taille 47', 12, 823, 24, NOW());
 
 INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES ('G.ZANOTII GOLD/WHITE', 'basket taille 43', 4, 800, 24, NOW());
+       VALUES ('G.ZANOTI GOLD/WHITE', 'basket taille 43', 4, 800, 24, NOW());
 
 INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
-       VALUES ('G.ZANOTII GOLD/BLACK', 'basket taille 42', 7, 800, 24, NOW());
+       VALUES ('G.ZANOTI GOLD/BLACK', 'basket taille 42', 7, 800, 24, NOW());
 
 
 
@@ -181,6 +194,10 @@ INSERT INTO commande (nprod,quantite,nclient)
 
 INSERT INTO commande (nprod,quantite,nclient)
        VALUES (floor(RAND(16)*154/10), 1, 1);
+
+INSERT INTO commande (nprod,quantite,nclient)
+       VALUES (floor(RAND()*17),1 ,floor(RAND()*7));
+
 
 
 SELECT *
