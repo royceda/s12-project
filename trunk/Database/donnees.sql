@@ -189,6 +189,14 @@ INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_
 INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
        VALUES ('G.ZANOTI GOLD/BLACK', 'basket taille 42', 7, 800, 1, NOW());
 
+INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES ('PAUL SMITH', 'costume taille 42', 7, 1200, 4, NOW());
+
+INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_add)
+       VALUES ('BURBERRY', 'costume taille 44', 7, 1200, 4, NOW());
+
+
+
 
 -- commande
 INSERT INTO commande (nprod,quantite,nclient)
