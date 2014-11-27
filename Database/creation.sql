@@ -51,7 +51,6 @@ CREATE TABLE produit(
        id          INTEGER NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,
        designation VARCHAR(32),
        descriptif  VARCHAR(64),
-       disponible  INTEGER,
        prix        INTEGER,
        catalogue   INTEGER,
        date_add    DATE,
@@ -98,23 +97,30 @@ CREATE TABLE avis(
        nclient INTEGER,
        note    INTEGER,
        comment VARCHAR(64),
-       CONSTRAINT Cnote CHECK (note < 5),
+       CONSTRAINT  Cnote     CHECK (note < 5),
        FOREIGN KEY (nprod)   REFERENCES produit(id) ON DELETE CASCADE,
        FOREIGN KEY (nclient) REFERENCES menbre(id)  ON DELETE CASCADE)
        CHARSET = UTF8; 
               
+-- 11 
+CREATE TABLE disponibilite(
+       nprod    INTEGER NOT NULL,
+       taille   INTEGER,
+       quantite INTEGER NOT NULL)
+       CHARSET = UTF8;
+
 
 -- Les contraintes specifiques 
 
--- 10
+-- 12
 ALTER TABLE menbre ADD CONSTRAINT Cmail
       CHECK (mail LIKE '%@%');
 
--- 11
+-- 13
 ALTER TABLE adresse ADD CONSTRAINT Cpays
       CHECK (pays IN ('ALLEMAGNE', 'FRANCE', 'ITALIE', 'ESPAGNE', 'BELGIQUE')); 
 
--- 12
+-- 14
 
 
 
