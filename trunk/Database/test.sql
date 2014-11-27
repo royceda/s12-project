@@ -134,6 +134,14 @@ INSERT INTO produit (designation, descriptif, disponible, prix, catalogue, date_
 
 
 
+
+
+
+
+
+
+
+
 select *
 from produit;
 
