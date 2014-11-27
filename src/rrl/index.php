@@ -1,24 +1,10 @@
 <?php
-start_session();
+session_start();
+$adresse_actuelle="index.php";
 $id=0;
-include_once 'bdd.php';
-$b=TRUE;
+include_once 'modules/bdd.php';
 $NBPAGE=18;
-if (!isset($_SESSION["login"])){
-	$b=FALSE;
-}
-if (isset($_GET['co'])){
-	if (isset($_POST["password"]) && isset($_POST["login"])){
-		$statement='Select password From identification Where login="'.$_POST['login'].'"';
-		$select=$bdd->query(statement);
-		while($res=$select->fetch()){
-			if ($res["password"]==password_hash($_POST['password'],PASSWORD_DEFAULT)){
-				$_SESSION['login']=$_POST['login'];
-				$b=TRUE;
-			}
-		}
-	}
-}
+include "modules/connexion.php"
 ?>
 <!DOCTYPE html>
 <html class=""><head>
@@ -30,36 +16,24 @@ if (isset($_GET['co'])){
 <link href="index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<a href="http://localhost/rrl/accueil.html" id="contener_logo"><img src="index_files/logo.png" class="logo"></a>
-<?php if ($b==FALSE){	
-	?>
-<form action="membres/seco.php" id="connexion">
-<div><label for="login">Login</label><input id="login" name="login" type="text"></div>
-<div><label for="password">Pass</label><input id="password" name="password" type="password"></div>
-<div class="connexion">
-	<a href="inscription.php">register</a> 
-	<a href="index.php?c=1">log in</a>
-</div>
-</form>
-<?php 
-	}
-	else {
-		if (!isset($_SESSION['nom'])){
-			$statement='Select nom,prenom From membre Where mail="'.$_SESSION['login'].'"';
-			$select=$bdd->query($statement);
-			while($res=$select->fetch()){
-				$_SESSION['nom']=$res['nom'];
-				$_SESSION['prenom']=$res['prenom'];
-			}
-		}
-		?>
-		<div id="connexion">
-		<div class="nom"><?php echo "Bonjour ".$_SESSION['nom']." ".$_SESSION['prenom']." "?></div>
-		<div class="espace_client">Votre espace client</div>
-		</div>
-		<?php 
-	}
+<?php include_once 'head.php';
 include_once 'menu.php';
+if ($b==TRUE){
+$statement="Select Count(*) As nb From commande Where confirme=0 And nclient=".$_SESSION['id'].'"';
+$nb_commande=$bdd->query($statement)->fetch()['nb'];
+}
+else {
+	if (isset($_SESSION['pannier'])){
+		$nb_commande=count($_SESSION['pannier']);
+	}
+	else 
+		$nb_commande=0;
+}
+?>
+<div style="display:inline-block;width:100%;">
+<a class="voir_pannier" href="http://localhost/rrl/panier/verifier.php">Cart:<span class="nb_items"><?php echo $nb_commande?></span> item </a>
+</div>
+<?php 
 $statement='Select name FROM photo Where id=0';
 $res=$bdd->query($statement)->fetch();
 ?>
@@ -95,12 +69,24 @@ $res=$bdd->query($statement)->fetch();
 <?php 
 if ($page>2){
 	$start=0;
-	$end=5;
+	if ($pages<5)
+		$end=$pages;
+	else 
+		$end=5;
 }
 else{
-	$start=$page-2;
-	$end=$page+3;
+	if ($pages<5){
+		$start=0;
+		$end=$pages;
+    }
+	else{
+		$start=$page-2;
+		$end=$page+3;
+	}
 }
+if ($pages>5 && $page>3){
+	?> <a href="?p=<?php echo $start-1?>">&lt;</a>
+<?php }
 for ($i=$start;$i<$end;$i++){
 	if ($i==$page){?>
 		<span class="actuel"><?php echo $page?></span>
@@ -111,9 +97,11 @@ for ($i=$start;$i<$end;$i++){
 		<a href="?p=<?php echo $i?>"><?php echo $i?></a> 		 
 <?php 	}
 }
-	?>
- <a href="?p=<?php echo $page+2?>">...</a>
- <a href="?p=<?php echo $page+1?>">&gt;</a>
+if ($pages<$end+2)	
+ echo '<a href="?p=<?php echo $end+2?>">...</a>';
+if ($pages!=$page) 
+	echo '<a href="?p=<?php echo $page+1?>">&gt;</a>';
+?>
 </span>
 <?php 
 	include_once 'bottom.php';
