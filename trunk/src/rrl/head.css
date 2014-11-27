@@ -40,6 +40,11 @@
 #connexion a{
 	text-decoration: none;
 	color:black;
+	border:1px solid black;
+	padding:3px;
+}
+#connexion a:hover{
+	text-decoration: underline;
 }
 #password{
 	float:right;
@@ -50,4 +55,19 @@
 #connexion .connexion{
 	width:45%;
 	float:right;
+}
+#connexion .connexion *{
+	display:inline;
+}
+#connexion .connexion .login{
+	background-color:black;
+	cursor:pointer;
+	padding-right:15px;
+	padding-left:15px;
+	text-align: center;
+	color:white;
+	padding:5px;
+}
+#connexion .connexion .login:hover{
+	opacity:0.5;
 }
