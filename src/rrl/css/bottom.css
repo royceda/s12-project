@@ -1,9 +1,17 @@
 @CHARSET "UTF-8";
 
+.botto{
+	height:200px;
+	width:100%;
+}
 #bottom{
   background-color:black;
   color:white;
   text-align:center;
+  bottom:0;
+  position:absolute;
+  width:100%;
+  
 }
 #bottom a{
   display:inline-block;
@@ -36,4 +44,6 @@
 }
 body{
   margin:0;
+  position:relative;
+  padding-bottom:100px;
 }

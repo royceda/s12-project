@@ -4,7 +4,7 @@ $adresse_actuelle="index.php";
 $id=0;
 include_once 'modules/bdd.php';
 $NBPAGE=18;
-include "modules/connexion.php"
+include "modules/connexion.php";
 ?>
 <!DOCTYPE html>
 <html class=""><head>
@@ -18,39 +18,26 @@ include "modules/connexion.php"
 <body>
 <?php include_once 'head.php';
 include_once 'menu.php';
-if ($b==TRUE){
-$statement="Select Count(*) As nb From commande Where confirme=0 And nclient=".$_SESSION['id'].'"';
-$nb_commande=$bdd->query($statement)->fetch()['nb'];
-}
-else {
-	if (isset($_SESSION['pannier'])){
-		$nb_commande=count($_SESSION['pannier']);
-	}
-	else 
-		$nb_commande=0;
-}
-?>
-<div style="display:inline-block;width:100%;">
-<a class="voir_pannier" href="http://localhost/rrl/panier/verifier.php">Cart:<span class="nb_items"><?php echo $nb_commande?></span> item </a>
-</div>
-<?php 
+include_once 'modules/pannier.php';
 $statement='Select name FROM photo Where id=0';
 $res=$bdd->query($statement)->fetch();
 ?>
-<div class="photo_j"><img src="images/photo_j/<?php echo $res['name']?>.jpg"></div>
+<div class="photo_j"><img src="images/photo_j/<?php echo $res['name']?>.jpg"><div>Nouveautés</div></div>
 <div class="bloc">
 <?php 
-	$statement='Select Count(*) as nb From produit';
-	$pages=$bdd->query($statement)->fetch()['nb'];
 	if (!isset($_GET['p'])){
 		$page=0;
 	}
-	$satement="Select p.id as id, p.type as type,p.designation as designation ,p.prix as prix, c.nom as catalogue".
-				"From produit p,catalogue c".
-				"Where p.catalogue=c.id And p.disponible<>0 ".
+	else $page=$_GET['p'];
+	$statement="Select p.id as id, p.type as type, p.designation as designation, p.prix as prix, c.nom as catalogue ".
+				"From produit p,catalogue c, disponibilite d ".
+				"Where p.catalogue=c.id And p.id=d.nprod And d.quantite<>0 ".
 				"Order By date_add Desc ". 
-				"Limit ".$page*$NBPAGE.",".$page*($NBPAGE+1);
+				"Limit ".$page*$NBPAGE.",".($page+1)*$NBPAGE;
 	$select=$bdd->query($statement);
+	$pages=$select->rowCount();
+	echo $pages;
+	print_r($select);
 	while($res=$select->fetch()){
 		?>		 
 		<div class="item">
@@ -64,46 +51,8 @@ $res=$bdd->query($statement)->fetch();
 	}
 ?>
 </div>
-
-<span class="navigation_p">Page:
 <?php 
-if ($page>2){
-	$start=0;
-	if ($pages<5)
-		$end=$pages;
-	else 
-		$end=5;
-}
-else{
-	if ($pages<5){
-		$start=0;
-		$end=$pages;
-    }
-	else{
-		$start=$page-2;
-		$end=$page+3;
-	}
-}
-if ($pages>5 && $page>3){
-	?> <a href="?p=<?php echo $start-1?>">&lt;</a>
-<?php }
-for ($i=$start;$i<$end;$i++){
-	if ($i==$page){?>
-		<span class="actuel"><?php echo $page?></span>
-	
-	<?php
-	} 
-	else {?>
-		<a href="?p=<?php echo $i?>"><?php echo $i?></a> 		 
-<?php 	}
-}
-if ($pages<$end+2)	
- echo '<a href="?p=<?php echo $end+2?>">...</a>';
-if ($pages!=$page) 
-	echo '<a href="?p=<?php echo $page+1?>">&gt;</a>';
-?>
-</span>
-<?php 
+	include_once 'modules/pages.php';
 	include_once 'bottom.php';
 ?>
 
