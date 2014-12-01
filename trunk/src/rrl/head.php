@@ -1,7 +1,7 @@
-<a href="http://localhost/rrl/accueil.html" id="contener_logo"><img src="index_files/logo.png" class="logo"></a>
+<a href="<?php if ($id!=0) echo "../"?>index.php" id="contener_logo"><img src="<?php if ($id!=0) echo "../"?>images/logo.png" class="logo"></a>
 <?php if ($b==FALSE){
 	?>
-<form action="<?php echo $adresse_actuelle?>?co=1" id="connexion">
+<form action="<?php echo $adresse_actuelle?>?co=1" id="connexion" method="post">
 <div><label for="login">Login</label><input id="login" name="login" type="text"></div>
 <div><label for="password">Pass</label><input id="password" name="password" type="password"></div>
 <div class="connexion">
