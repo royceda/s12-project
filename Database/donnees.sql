@@ -37,37 +37,37 @@ INSERT INTO adresse ( ville, rue, code_postale, pays)
 
 -- client
 
-INSERT INTO menbre (id, nom, prenom, telephone, mail, adresse)
+INSERT INTO membre (id, nom, prenom, telephone, mail, adresse)
        VALUES (1, 'Brown', 'Charlie', 0676753452, 'allo@gmail.ch', 1);
 
-INSERT INTO menbre (id,nom, prenom, telephone,mail, adresse)
+INSERT INTO membre (id,nom, prenom, telephone,mail, adresse)
        VALUES (2,'VAN PEE', 'LINUS', 0676753452, 'aaaaaa@bb.fr', 3);
 
-INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
+INSERT INTO membre (nom, prenom, telephone, mail, adresse)
        VALUES ('Shakur', 'Tupac', 0676753452, 'B.panther@licos.com', 2);
 
-INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
+INSERT INTO membre (nom, prenom, telephone, mail, adresse)
        VALUES ('Combs', 'Sean', 0676753452, 'DIDDY@licos.com', 7);
 
-INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
+INSERT INTO membre (nom, prenom, telephone, mail, adresse)
        VALUES ('Machiavel', 'Nicolas', 0676753452, 'N.Machiavel@licos.com', 9);
 
-INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
+INSERT INTO membre (nom, prenom, telephone, mail, adresse)
        VALUES ('Presley', 'Elvis', 0676753452, 'E.Presley@licos.com', 10);
 
-INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
+INSERT INTO membre (nom, prenom, telephone, mail, adresse)
        VALUES ('Endrix', 'Jimmy', 0676753452, 'J.Endrix@licos.com', 8);
 
-INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
+INSERT INTO membre (nom, prenom, telephone, mail, adresse)
        VALUES ('Kant', 'Emmanuel', 0676753452, 'E.Kant@licos.com', 6);
 
-INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
+INSERT INTO membre (nom, prenom, telephone, mail, adresse)
        VALUES ('Bryant', 'Kobe', 0676753452, 'K.Bryant@aol.com', 8);
 
-INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
+INSERT INTO membre (nom, prenom, telephone, mail, adresse)
        VALUES ('Wiggings', 'Andrew', 0676753452, 'A.Wiggings@licos.com', 4);
 
-INSERT INTO menbre (nom, prenom, telephone, mail, adresse)
+INSERT INTO membre (nom, prenom, telephone, mail, adresse)
        VALUES ('Benzema', 'Karim', 0676753452, 'K.benzema@aol.com', 5);
 
  
@@ -141,7 +141,6 @@ INSERT iNTO disponibilite (nprod, taille, quantite)
 INSERT iNTO disponibilite (nprod, taille, quantite)
        VALUES(1, 44, 10); 
 
-
 INSERT INTO produit (id, designation, descriptif, prix, catalogue, date_add, photo)
        VALUES (2,'AIR JORDAN XXI PE', 'basket', 240, 1, '2014-04-20','./photos/chaussure/2.jpg');
 
@@ -214,9 +213,6 @@ INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
 -- disponibilite
 
 
-
-
-
 -- commande
 INSERT INTO commande (nprod,quantite,nclient)
        VALUES (floor(RAND(16)*10),3, 2);
@@ -259,6 +255,7 @@ INSERT INTO commande (nprod,quantite,nclient)
 
 INSERT INTO commande (nprod,quantite,nclient)
        VALUES (floor(RAND(16)*154/10), 1, 1);
+
 
 -- promo catalogue
 

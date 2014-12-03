@@ -19,7 +19,7 @@ CREATE TABLE adresse(
        CHARSET = UTF8;
 
 -- 2
-CREATE TABLE menbre(
+CREATE TABLE membre(
        id        INTEGER     UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
        nom       VARCHAR(12),
        prenom    VARCHAR(12),
@@ -64,8 +64,11 @@ CREATE TABLE commande(
        nprod    INTEGER,
        quantite INTEGER,
        nclient  INTEGER,
+       confirme INTEGER DEFAULT 0,
+       date_cmd DATE,
+       CONSTRAINT  Cverif    CHECK (note <= 1),
        FOREIGN KEY (nprod)   REFERENCES produit(id) ON UPDATE CASCADE,
-       FOREIGN KEY (nclient) REFERENCES menbre(id)  ON UPDATE CASCADE)
+       FOREIGN KEY (nclient) REFERENCES membre(id)  ON UPDATE CASCADE)
        CHARSET = UTF8; 
 
 -- 7   
@@ -80,7 +83,7 @@ CREATE TABLE code_promo(
        ncl         INTEGER NOT NULL,
        pourcentage INTEGER NOT NULL,
        ncmd        INTEGER,    
-       FOREIGN KEY (ncl)  REFERENCES menbre(id)   ON UPDATE CASCADE,
+       FOREIGN KEY (ncl)  REFERENCES membre(id)   ON UPDATE CASCADE,
        FOREIGN KEY (ncmd) REFERENCES commande(id) ON UPDATE CASCADE)
        CHARSET = UTF8;
        
@@ -88,7 +91,7 @@ CREATE TABLE code_promo(
 CREATE TABLE identifiant(
        login    VARCHAR(32),
        password VARCHAR(16),
-       FOREIGN KEY (login) REFERENCES menbre(mail) ON UPDATE CASCADE)
+       FOREIGN KEY (login) REFERENCES membre(mail) ON UPDATE CASCADE)
        CHARSET = UTF8;
 
 -- 10
@@ -99,7 +102,7 @@ CREATE TABLE avis(
        comment VARCHAR(64),
        CONSTRAINT  Cnote     CHECK (note < 5),
        FOREIGN KEY (nprod)   REFERENCES produit(id) ON DELETE CASCADE,
-       FOREIGN KEY (nclient) REFERENCES menbre(id)  ON DELETE CASCADE)
+       FOREIGN KEY (nclient) REFERENCES membre(id)  ON DELETE CASCADE)
        CHARSET = UTF8; 
               
 -- 11 
@@ -113,7 +116,7 @@ CREATE TABLE disponibilite(
 -- Les contraintes specifiques 
 
 -- 12
-ALTER TABLE menbre ADD CONSTRAINT Cmail
+ALTER TABLE membre ADD CONSTRAINT Cmail
       CHECK (mail LIKE '%@%');
 
 -- 13
