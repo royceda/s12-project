@@ -75,7 +75,8 @@ CREATE TABLE commande(
 CREATE TABLE expedition(
        id     INTEGER NOT NULL UNIQUE AUTO_INCREMENT,
        addr   INTEGER NOT NULL, 
-       dexp   DATE,
+       date   DATE DEFAULT NULL,
+       ncmd   INTEGER,
        FOREIGN KEY (addr) REFERENCES adresse(id)  ON UPDATE CASCADE);
 
 -- 8 
