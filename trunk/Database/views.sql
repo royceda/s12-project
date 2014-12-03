@@ -55,4 +55,20 @@ SELECT *
 FROM best_clients; 
 
 
--- 
+-- info client sur une commande
+
+
+SELECT m.nom as Nom, m.prenom as prenom, a.rue as Rue, a.ville as Ville, a.code_postale as Postale, a.pays as Pays, count(c.nclient)
+FROM adresse a, commande c, menbre m
+WHERE c.nclient = m.id
+AND m.adresse = a.id;
+
+
+-- d'autre requete utiile
+-- historique d'achat du client 2
+
+select * 
+from commande, produit, disponibilite d
+ where commande.nprod = produit.id
+ and nclient = 2 
+and commande.nprod = d.nprod ;
