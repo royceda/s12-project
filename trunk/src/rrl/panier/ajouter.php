@@ -1,6 +1,6 @@
 <?php
 if (!isset($_GET['id'])){
-	header("../index.php");
+	header("Location: ../index.php");
 }
 else{
 	$id_produit=$_GET['id'];
@@ -29,5 +29,5 @@ else{
 		else
 			$_SESSION['pannier'][$_GET['id']]=$_GET["qute"];
 	}
-	header("../produit/consulter.php?id=".$_GET['id']);	
+	header("Location: ../produit/consulter.php?id=".$_GET['id']);	
 }
