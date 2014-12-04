@@ -58,7 +58,7 @@ CREATE TABLE commande(
        quantite INTEGER,
        nclient  INTEGER,
        confirme INTEGER DEFAULT 0,
-       date_cmd DATE,
+       date     DATE,
        CONSTRAINT  Cverif    CHECK (note <= 1),
        FOREIGN KEY (nprod)   REFERENCES produit(id) ON UPDATE CASCADE,
        FOREIGN KEY (nclient) REFERENCES membre(id)  ON UPDATE CASCADE)

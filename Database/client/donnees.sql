@@ -1,4 +1,4 @@
-USE rrl_test;
+USE RRL;
 
 
 -- adresse
@@ -39,8 +39,8 @@ INSERT INTO adresse ( ville, rue, code_postale, pays)
 INSERT INTO membre (id, nom, prenom, telephone, mail, adresse)
        VALUES (1, 'Brown', 'Charlie', 0676753452, 'allo@gmail.ch', 1);
 
-INSERT INTO membre (id,nom, prenom, telephone,mail, adresse)
-       VALUES (2,'VAN PEE', 'LINUS', 0676753452, 'aaaaaa@bb.fr', 3);
+INSERT INTO membre (nom, prenom, telephone,mail, adresse)
+       VALUES ('VAN PEE', 'LINUS', 0676753452, 'aaaaaa@bb.fr', 3);
 
 INSERT INTO membre (nom, prenom, telephone, mail, adresse)
        VALUES ('Shakur', 'Tupac', 0676753452, 'B.panther@licos.com', 2);
@@ -124,7 +124,7 @@ INSERT INTO catalogue(nom, maj)
 INSERT INTO catalogue(nom, maj)
        VALUES ( 'PANTALON', NOW());
 
-INSERT INTO catalogue(id, nom, maj)
+INSERT INTO catalogue(nom, maj)
        VALUES ( 'ACCESSOIRES', NOW());
 
 
@@ -134,17 +134,11 @@ INSERT INTO catalogue(id, nom, maj)
 INSERT INTO produit (id, designation, descriptif, prix, catalogue, date_add, photo)
        VALUES (1, 'NIKE LEBRON XI', 'basket', 180, 1, '2014-11-22','./photos/chaussure/1.jpg');
 
-INSERT iNTO disponibilite (nprod, taille, quantite)
-       VALUES (1, 42, 12); 
-
-INSERT iNTO disponibilite (nprod, taille, quantite)
-       VALUES(1, 44, 10); 
-
 INSERT INTO produit (id, designation, descriptif, prix, catalogue, date_add, photo)
        VALUES (2,'AIR JORDAN XXI PE', 'basket', 240, 1, '2014-04-20','./photos/chaussure/2.jpg');
 
 INSERT INTO produit (id, designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES (3, 'NIKE KD VII', 'basket', 110, 1, NOW(), ,'./photos/chaussure/3.jpg');
+       VALUES (3, 'NIKE KD VII', 'basket', 110, 1, NOW(), './photos/chaussure/3.jpg');
 
 INSERT INTO produit (id, designation, descriptif, prix, catalogue, date_add, photo)
        VALUES (4, 'AIR JORDAN III', 'basket', 110, 1, NOW(),'./photos/chaussure/4.jpg');
@@ -287,7 +281,6 @@ INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
 INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
        VALUES ('THE KOOPLES', 'Veste de costume en laine irisée', 425, 4, NOW(),'./photos/veste/8');
 
-
 INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
        VALUES ('THE KOOPLES', 'Pantalon de costume imprimé Prince de Galles en laine slim fit gris et noir', 175, 4, NOW(),'./photos/pantalon/1');
 
@@ -310,9 +303,7 @@ INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
        VALUES ('THE KOOPLES', 'Pantalon de costume imprimé pied de poule en laine slim fit', 175, 4, NOW(),'./photos/pantalon/7');
 
 
-
 -- disponibilite
-
 
 INSERT iNTO disponibilite (nprod, taille, quantite)
        VALUES(2, 42, 14); 
@@ -424,6 +415,7 @@ INSERT iNTO disponibilite (nprod, taille, quantite)
 
 INSERT iNTO disponibilite (nprod, taille, quantite)
        VALUES(1+floor(rand()*20), 38+floor(rand()*10), 1+rand()*10); 
+
 
 
 -- commande
@@ -593,7 +585,6 @@ INSERT INTO promo (catalogue, reduction, deadline)
 -- Classement des stars
 
 
-
 CREATE VIEW plus_moins (ventes, nprod, designation) AS
 SELECT count(nprod) AS ventes, p.id as nprod, designation 
 FROM commande right outer join produit p
@@ -631,7 +622,7 @@ ORDER BY prix desc;
 
 CREATE VIEW best_clients (ncl, nom, prenom, nb_achats) AS
 SELECT cl.id as ncl, cl.nom as nom, cl.prenom as prenom, count(nclient) as nb_achats 
-FROM menbre cl, commande c
+FROM membre cl, commande c
 WHERE cl.id = c.nclient
 GROUP BY cl.id
 ORDER BY nb_achats desc;
