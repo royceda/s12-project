@@ -1,13 +1,6 @@
--- Liste des creations des tables ainsi que leur contraintes en mysql
+CREATE DATABASE RRL;
+USE RRL;
 
--- La DB
-DROP DATABASE rrl_test;
-
-CREATE DATABASE rrl_test;
-
-USE rrl_test;
-
--- Les tables
 
 -- 1
 CREATE TABLE adresse(
@@ -112,22 +105,5 @@ CREATE TABLE disponibilite(
        taille   INTEGER,
        quantite INTEGER NOT NULL)
        CHARSET = UTF8;
-
-
-
-
--- Les contraintes specifiques 
-
--- 12
-ALTER TABLE membre ADD CONSTRAINT Cmail
-      CHECK (mail LIKE '%@%');
-
--- 13
-ALTER TABLE adresse ADD CONSTRAINT Cpays
-      CHECK (pays IN ('ALLEMAGNE', 'FRANCE', 'ITALIE', 'ESPAGNE', 'BELGIQUE')); 
-
--- 14
-
-
 
 
