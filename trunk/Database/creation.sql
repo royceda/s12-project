@@ -1,3 +1,4 @@
+
 -- Liste des creations des tables ainsi que leur contraintes en mysql
 
 -- La DB
@@ -54,7 +55,8 @@ CREATE TABLE produit(
        prix        INTEGER,
        catalogue   INTEGER,
        date_add    DATE,
-       photo       VARCHAR(64), 
+       photo       VARCHAR(64),
+       type        VARCHAR(255), 
        FOREIGN KEY (catalogue) REFERENCES catalogue(id) ON UPDATE CASCADE)
        CHARSET = UTF8;
     
@@ -113,6 +115,10 @@ CREATE TABLE disponibilite(
        quantite INTEGER NOT NULL)
        CHARSET = UTF8;
 
+CREATE TABLE photo(
+       id           INTEGER     NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,
+       nom        VARCHAR(255) NOT NULL)
+       CHARSET = UTF8;
 
 
 
