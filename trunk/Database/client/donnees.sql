@@ -73,19 +73,19 @@ INSERT INTO membre (nom, prenom, telephone, mail, adresse)
 -- identifiant
 
 INSERT INTO identifiant (login, password)
-       VALUES ('allo@gmail.ch', 'blahblah');
+       VALUES ('allo@gmail.ch', 'zfdj66ijdk');
 
 INSERT INTO identifiant (login, password)
-       VALUES ('aaaaaa@bb.fr', 'blablabla');
+       VALUES ('aaaaaa@bb.fr', 'nfjklhs_879');
 
 INSERT INTO identifiant (login, password)
-       VALUES ('B.panther@licos.com', 'blahblah');
+       VALUES ('B.panther@licos.com', 'jfjh657sT');
 
 INSERT INTO identifiant (login, password)
-       VALUES ('DIDDY@licos.com', 'blahblah');
+       VALUES ('DIDDY@licos.com', 'BUvdjf65e');
 
 INSERT INTO identifiant (login, password)
-       VALUES ('N.Machiavel@licos.com', 'blahblah');
+       VALUES ('N.Machiavel@licos.com', 'klflkwe787');
 
 INSERT INTO identifiant (login, password)
        VALUES ('E.Presley@licos.com', 'blahblah');
@@ -112,20 +112,20 @@ INSERT INTO identifiant (login, password)
 INSERT INTO catalogue(id, nom, maj)
        VALUES (1, 'CHAUSSURES', '2014-04-20');
 
-INSERT INTO catalogue(id, nom, maj)
-       VALUES (2, 'VESTES', NOW());
+INSERT INTO catalogue(nom, maj)
+       VALUES ( 'VESTES', NOW());
+
+INSERT INTO catalogue(nom, maj)
+       VALUES ( 'CHEMISES', NOW());
+
+INSERT INTO catalogue(nom, maj)
+       VALUES ( 'CRAVATES', NOW());
+
+INSERT INTO catalogue(nom, maj)
+       VALUES ( 'PANTALON', NOW());
 
 INSERT INTO catalogue(id, nom, maj)
-       VALUES (3, 'CHEMISES', NOW());
-
-INSERT INTO catalogue(id, nom, maj)
-       VALUES (4, 'CRAVATES', NOW());
-
-INSERT INTO catalogue(id, nom, maj)
-       VALUES ('PANTALON', NOW());
-
-INSERT INTO catalogue(id, nom, maj)
-       VALUES ('ACCESSOIRES', NOW());
+       VALUES ( 'ACCESSOIRES', NOW());
 
 
 
@@ -142,16 +142,6 @@ INSERT iNTO disponibilite (nprod, taille, quantite)
 
 INSERT INTO produit (id, designation, descriptif, prix, catalogue, date_add, photo)
        VALUES (2,'AIR JORDAN XXI PE', 'basket', 240, 1, '2014-04-20','./photos/chaussure/2.jpg');
-
-INSERT iNTO disponibilite (nprod, taille, quantite)
-       VALUES(2, 42, 14); 
-
-INSERT iNTO disponibilite (nprod, taille, quantite)
-       VALUES(1, 45, 5); 
-
-INSERT iNTO disponibilite (nprod, taille, quantite)
-       VALUES(floor(rand()*20), 38+floor(rand()*10), 1+rand()*10); 
-
 
 INSERT INTO produit (id, designation, descriptif, prix, catalogue, date_add, photo)
        VALUES (3, 'NIKE KD VII', 'basket', 110, 1, NOW(), ,'./photos/chaussure/3.jpg');
@@ -321,63 +311,17 @@ INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
 
 
 
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-INSERT INTO produit (designation, descriptif, prix, catalogue, date_add, photo)
-       VALUES ('THE KOOPLES', 'veste de costume Pinpoint', 425, 4, NOW(),'./photos/veste/1');
-
-
 -- disponibilite
 
+
+INSERT iNTO disponibilite (nprod, taille, quantite)
+       VALUES(2, 42, 14); 
+
+INSERT iNTO disponibilite (nprod, taille, quantite)
+       VALUES(1, 45, 5); 
+
+INSERT iNTO disponibilite (nprod, taille, quantite)
+       VALUES(1+floor(rand()*20), 38+floor(rand()*10), 1+rand()*10); 
 
 INSERT iNTO disponibilite (nprod, taille, quantite)
        VALUES(1+floor(rand()*20), 38+floor(rand()*10), 1+rand()*10); 
