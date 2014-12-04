@@ -1,26 +1,39 @@
 <?php
+$id=999;
+ini_set('xdebug.collect_vars', 'on');
+ini_set('xdebug.collect_params', '4');
+ini_set('xdebug.dump_globals', 'on');
+ini_set('xdebug.dump.SERVER', 'REQUEST_URI');
+ini_set('xdebug.show_local_vars', 'on');
+
+
 session_start();
-if (!isset($_GET['id']) || !isset($_GET['c'])){
-	header("../index.php");
+
+if (!isset($_GET['id'])){
+	header("Location: ../index.php");
+	
 }
 else{
 	include_once '../modules/bdd.php';
+	$statement="Select catalogue From produit Where id=".$_GET['id'];
+	$_GET['c']=$bdd->query($statement)->fetch()['catalogue'];
 	$adresse_actuelle="../categorie/index.php";
-	$statement='Select name FROM photo Where id In'.$_GET['c'];
+	$statement='Select name FROM photo Where id='.$_GET['c'];
 	$res=$bdd->query($statement)->fetch();
 	$state="Select designation From produit Where id=".$_GET['id'];
-	$designation=$bdd->query($state)->fetch()['designation']?>
+	$designation=$bdd->query($state)->fetch()['designation'];
+	include "../modules/connexion.php";?>
 	<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title><?php echo $designation?></title>
-<link href="menu.css" rel="stylesheet" type="text/css">
-<link href="head.css" rel="stylesheet" type="text/css">
-<link href="css/categorie.css" rel="stylesheet" type="text/css">
-<link href="css/bottom.css" rel="stylesheet" type="text/css">
-<link href="css/produit.css" rel="stylesheet" type="text/css">
-<script src="js/menu.js" type="text/javascript"></script>
+<link href="../menu.css" rel="stylesheet" type="text/css">
+<link href="../head.css" rel="stylesheet" type="text/css">
+<link href="../css/categorie.css" rel="stylesheet" type="text/css">
+<link href="../css/bottom.css" rel="stylesheet" type="text/css">
+<link href="../css/produit.css" rel="stylesheet" type="text/css">
+<script src="../js/menu.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -30,6 +43,11 @@ else{
 	<div id="menuV">
 	<div id="menu">
 	<?php 
+		$statement="Select id,nom From catalogue";
+		$select=$bdd->query($statement);
+		while($res=$select->fetch()){
+			$catalogues[$res['id']]=$res['nom'];
+		}
 		for ($i=1;$i<5;$i++){
 			echo '<div class="menu" id="menu'.$i.'" onclick="event.preventDefault();afficheMenu(this);">';
 			echo '<a href="#">'.$catalogues[$i].'</a>';
@@ -68,7 +86,7 @@ while($res=$select->fetch()){
 <div class="titre">
 <?php echo $res['designation'];?>
 </div>
-<div class="photo_produit"><img alt="<?php echo $res['designation']?>" src="../photos/<?php echo $res['catalogue']?>/<?php echo['id']?>.jpg"></div>
+<div class="photo_produit"><img alt="<?php echo $res['designation']?>" src="../photos/<?php echo $res['catalogue']?>/<?php echo $res['id']?>.jpg"></div>
 <div class="description">
 <?php echo $res['descriptif']?>
 </div>
