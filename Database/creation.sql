@@ -64,10 +64,11 @@ CREATE TABLE produit(
 CREATE TABLE commande(
        id       INTEGER NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,
        nprod    INTEGER,
+       taille   INTEGER,
        quantite INTEGER,
        nclient  INTEGER,
        confirme INTEGER DEFAULT 0,
-       date_cmd DATE,
+       date     DATE,
        CONSTRAINT  Cverif    CHECK (note <= 1),
        FOREIGN KEY (nprod)   REFERENCES produit(id) ON UPDATE CASCADE,
        FOREIGN KEY (nclient) REFERENCES membre(id)  ON UPDATE CASCADE)
