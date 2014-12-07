@@ -24,10 +24,10 @@
 		<div id="connexion">
 			<div class="nom"><?php echo "Bonjour ".$_SESSION['nom']." ".$_SESSION['prenom']." "?></div>
 			<div class="espace_client">
-				<a href="modules/espace_client.php"> Votre espace client </a>
+				<a href="espace_client.php"> Votre espace client </a>
 			</div>
-			<div class="deconnection">
-				<a href="modules/deconnection.php"> Se Deconnecter </a>
+			<div class="deconnexion">
+				<a href="modules/deconnexion.php"> Se Deconnecter </a>
 			</div>
 		</div>
 		<?php 
