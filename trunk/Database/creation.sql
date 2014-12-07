@@ -2,7 +2,7 @@
 -- Liste des creations des tables ainsi que leur contraintes en mysql
 
 -- La DB
-DROP DATABASE rrl_test;
+-- DROP DATABASE rrl_test;
 
 CREATE DATABASE rrl_test;
 
