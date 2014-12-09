@@ -113,7 +113,7 @@ CREATE TABLE avis(
 CREATE TABLE disponibilite(
        nprod    INTEGER NOT NULL,
        taille   INTEGER,
-       quantite INTEGER NOT NULL)
+       quantite TINYINT UNSIGNED NOT NULL)
        CHARSET = UTF8;
 
 CREATE TABLE photo(
