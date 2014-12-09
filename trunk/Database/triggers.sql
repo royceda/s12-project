@@ -7,14 +7,11 @@ CREATE TABLE error(
 INSERT INTO error(id, message)
        values(1, 'Produit indisponible');
 
-INSERT INTO error(message)
-       values('error: Commande non confirmé');
+INSERT INTO error(id, message)
+       values(2, 'error: Commande non confirmé');
 
-INSERT INTO error(message)
-       values('impossible, prosuit non commandé');
-
-
-
+INSERT INTO error(id, message)
+       values(3, 'impossible, prosuit non commandé');
 
 
 
@@ -25,11 +22,9 @@ BEGIN
 	UPDATE disponibilite
 	SET quantite = quantite-1 WHERE nprod = NEW.nprod;		
 END //
-DELIMITER ;
 
 
 -- T1: On commmande que si le produit est dispo en taille et en quantite 
-DELIMITER //
 CREATE TRIGGER control_expedition BEFORE INSERT ON commande
 for each row
 BEGIN
@@ -43,11 +38,9 @@ BEGIN
 	END IF;
 
 END //
-DELIMITER;
 
 
 -- T3: on expedit que si la commande est confirmer
-DELIMITER //
 CREATE TRIGGER control_avis BEFORE INSERT ON expedition
 BEGIN
 
@@ -61,12 +54,10 @@ BEGIN
 
 
 END //
-DELIMITER;
 
 
 
 -- T4: un membre donne son avis que si il  a deja commander le produit
-DELIMITER |
 CREATE TRIGGER control_commande BEFORE INSERT ON avis
 BEGIN
 	IF (select * from commande where nprod=new.nprod and nclient=new.nclient) NOT NULL
@@ -76,10 +67,6 @@ BEGIN
 	ELSE
 		select message from error where id=2;
 	END IF;
-
-
-
-
 END //
 DELIMITER;
 
