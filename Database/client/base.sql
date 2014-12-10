@@ -57,6 +57,7 @@ CREATE TABLE commande(
        nprod    INTEGER,
        quantite INTEGER,
        nclient  INTEGER,
+	taille  INTEGER,
        confirme INTEGER DEFAULT 0,
        date     DATE,
        CONSTRAINT  Cverif    CHECK (note <= 1),
