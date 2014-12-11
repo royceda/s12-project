@@ -1,20 +1,27 @@
 
---
--- Structure de la vue `statCatalogue`
---
-DROP TABLE IF EXISTS `statCatalogue`;
+Drop View if exists `stattmp`;
+Create view `stattmp` as 
+SELECT c.date, nprod, quantite, nclient, confirme, IFNULL(pourcentage, 0) as pourcentage
+FROM commande c
+LEFT JOIN code_promo cd 
+ON c.id=cd.ncmd 
+Group by c.id;
+
+
+
+DROP VIEW IF EXISTS `statCatalogue`;
 
 CREATE VIEW `statCatalogue` AS 
-select `ca`.`nom` AS `catalogue`,sum((`c`.`quantite` * `p`.`prix`)) AS `prix` 
-from ((`commande` `c` join `produit` `p`) join `catalogue` `ca`) 
-where ((`c`.`nprod` = `p`.`id`) and (`p`.`catalogue` = `ca`.`id`)) 
-group by `ca`.`nom`
-Order by `prix` desc;
+Select  ca.nom, sum((p.prix*quantite)*(1-pourcentage/100)) as total
+From produit p,stattmp c, catalogue ca
+Where c.nprod=p.id And ca.id=p.catalogue
+Group by ca.nom
+ORDER BY total DESC;
 
 --
 -- Structure de la vue statClient
 --
-DROP TABLE IF EXISTS `statClient`;
+DROP VIEW IF EXISTS `statClient`;
 
 CREATE  VIEW `statClient` AS 
 select `c`.`nclient` AS `client`,sum((`c`.`quantite` * `p`.`prix`)) AS `prix` 
@@ -26,10 +33,10 @@ order by `prix` desc;
 --
 -- Structure de la vue statMoinsVendu
 --
-DROP TABLE IF EXISTS `statMoinsVendu`;
+DROP VIEW IF EXISTS `statMoinsVendu`;
 
 CREATE  VIEW `statMoinsVendu` AS 
-select `p`.`id` AS `produit`,(count(0) * sum(`c`.`quantite`)) AS `achats`
+select `p`.`id` AS `produit`, Count(*)*sum(`c`.`quantite`) AS `achats`
  from (`commande` `c` join `produit` `p`) 
 where (`c`.`nprod` = `p`.`id`) 
 group by `p`.`id` 
@@ -38,10 +45,10 @@ order by `achats`;
 --
 -- Structure de la vue statPlusVendu
 --
-DROP TABLE IF EXISTS `statPlusVendu`;
+DROP VIEW IF EXISTS `statPlusVendu`;
 
 CREATE  VIEW `statPlusVendu` AS 
-Select `p`.`id` AS `produit`,(count(0) * sum(`c`.`quantite`)) AS `achats` 
+Select `p`.`id` AS `produit`,(count(*) * sum(`c`.`quantite`)) AS `achats` 
 From (`commande` `c` join `produit` `p`)
 Where (`c`.`nprod` = `p`.`id`) 
 Group by `p`.`id` 
@@ -50,23 +57,21 @@ order by `achats` desc;
 --
 -- Structure de la vue statProduit
 --
-DROP TABLE IF EXISTS `statProduit`;
+DROP VIEW IF EXISTS `statProduit`;
 
 CREATE  VIEW `statProduit` AS 
-Select `p`.`designation` AS `produit`,sum((`c`.`quantite` * `p`.`prix`)) AS `prix` 
-From (`commande` `c` join `produit` `p`) 
-Where (`c`.`nprod` = `p`.`id`) 
-Group by `p`.`designation` 
-Order by `prix` desc;
-
+Select p.id, p.designation as designation, sum((p.prix*quantite)*(1-pourcentage/100)) as total
+From produit p,stattmp c
+Where c.nprod=p.id
+Group by p.id
+ORDER BY total DESC;
 --
 -- Structure de la vue statType
 --
-DROP TABLE IF EXISTS `statType`;
-
-CREATE  VIEW `statType` AS 
-Select `ca`.`type` AS `type`,sum((`c`.`quantite` * `p`.`prix`)) AS `prix` 
-From ((`commande` `c` join `produit` `p`) join `catalogue` `ca`) 
-Where ((`c`.`nprod` = `p`.`id`) and (`p`.`catalogue` = `ca`.`id`) and (`ca`.`id` = `p`.`catalogue`)) 
-Group by `ca`.`type` 
-Order by `prix` desc;
+DROP VIEW IF EXISTS `statType`;
+Create View `statType` As
+Select  ca.type, sum((p.prix*quantite)*(1-pourcentage/100)) as total
+From produit p,stattmp c, catalogue ca
+Where c.nprod=p.id And ca.id=p.catalogue
+Group by ca.type
+ORDER BY total DESC;
