@@ -15,6 +15,9 @@ if (!isset($_GET['id'])){
 }
 else{
 	include_once '../modules/bdd.php';
+	$statement="SELECT nom,type FROM catalogue Where id=".$id;
+	$res=$bdd->query($statement)->fetch();
+	$typeName=$res['type'];    $catalogueName=$res['nom'];
 	$statement="Select catalogue From produit Where id=".$_GET['id'];
 	$_GET['c']=$bdd->query($statement)->fetch()['catalogue'];
 	$adresse_actuelle="../categorie/index.php";
@@ -38,46 +41,15 @@ else{
 </head>
 <body>
 <?php include "../head.php";
-		include "../menu.php";?>
+		include "../menu.php";
+		include_once '../modules/pannier.php';
+?>
 	<div class="photo_categorie"><img src="images/photos/categories/<?php echo $res['name']?>.jpg"></div>
-	<div id="menuV">
-	<div id="menu">
-	<?php 
-		$statement="Select id,nom From catalogue";
-		$select=$bdd->query($statement);
-		while($res=$select->fetch()){
-			$catalogues[$res['id']]=$res['nom'];
-		}
-		for ($i=1;$i<5;$i++){
-			echo '<div class="menu" id="menu'.$i.'" onclick="event.preventDefault();afficheMenu(this);">';
-			echo '<a href="#">'.$catalogues[$i].'</a>';
-			echo '</div>';
-			$statement='Select type from produit Where catalogue='.$i.' Order By type';
-			$select=$bdd->query($statement);
-			$a=1;
-			if ($_GET['c']==$i)
-				echo '<div id="sousmenu'.$_GET['c'].'" style="display:initial">';
-			else 
-				echo '<div id="sousmenu'.$_GET['c'].'" style="display:none">';
-			while($res=$select->fetch()){
-				echo '<div class="sousmenu">';
-				if ($i==$id && $type==$a){
-					echo '<a href="../categorie/index.php?id='.$i.'&amp;ty='.$a.'" class="act">'.$res['type'].'</a>';
-					$typeName=$res['type'];
-				}
-				else 
-					echo '<a href="../categorie/index.php?id='.$i.'&amp;ty='.$a.'">'.$res['type'].'</a>';
-				echo '</div>';	
-				$a++;
-			}
-			echo "</div>";
-		}
-	?>	
-	</div>
-	</div>
+	<?php include_once '../modules/menuV.php'?>
+	
 <?php 
 	$statement="SELECT p.id as id, p.designation as designation, p.descriptif as descriptif, p.prix as prix,".
-		 " p.catalogue as catalogue, p.date_add as date,c.nom FROM produit p,catalogue c where p.id=".$_GET['id']." And c.id=".$_GET['c'] ;
+		 " p.catalogue as catalogue, p.date_add as date,c.nom,p.photo as photo FROM produit p,catalogue c where p.id=".$_GET['id']." And c.id=".$_GET['c'] ;
 $select=$bdd->query($statement);
 while($res=$select->fetch()){	
 ?>
@@ -86,7 +58,7 @@ while($res=$select->fetch()){
 <div class="titre">
 <?php echo $res['designation'];?>
 </div>
-<div class="photo_produit"><img alt="<?php echo $res['designation']?>" src="../photos/<?php echo $res['catalogue']?>/<?php echo $res['id']?>.jpg"></div>
+<div class="photo_produit"><img alt="<?php echo $res['designation']?>" src="../images/<?php echo $res['photo']?>"></div>
 <div class="description">
 <?php echo $res['descriptif']?>
 </div>
@@ -96,35 +68,39 @@ while($res=$select->fetch()){
 		<th></th>
 	</tr>
 	<tr>
+	<form action="../panier/ajouter.php?c=1&amp;t=1&amp;id=<?php echo $_GET['id']?>" method="post">
 		<td>Taille:</td>
 		<td>
-			<form action="categorie.php?c=1&amp;&t=1">
+			
 			<?php
-			$statement="SELECT taille FROM disponibilite d, produit p where d.nprod=".$_GET['id']." And d.quantite<>0" ;
+			$statement="SELECT DISTINCT d.taille FROM disponibilite d, produit p where d.nprod=".$_GET['id']." And d.quantite<>0 ORDER BY d.taille" ;
 			$s=$bdd->query($statement); 
 			?>
-			<select name="pointure">
-				<option value="none" selected>Selectionez votre taille</option>
+			<select name="taille" id="selection">
+				<option value="none" style="display:block;"selected>Selectionez votre taille</option>
 				<?php
-				while($r=$select->fetch()){ 
+				while($r=$s->fetch()){ 
 				?>
-				<option value="<?php echo $r['taille']?>"><?php echo $r['taille']?></option>
+				<option style="display:block;" value="<?php echo $r['taille']?>"><?php echo $r['taille']?></option>
 				<?php }?>
 			</select>
-			</form>
+			
 		</td>
 	</tr>
 	<tr>
 		<td>Prix:</td>
-		<td><?php echo $res['prix']?>€</td>
+	<td><?php echo $res['prix']?>€</td>
 	</tr>
 	</table>
-<br><a href="../produit/ajouter.php"?><div class="confirmer">Ajouter</div></a>
+	<br><input type="submit" value="AJOUTER"/>
+	</form>
+	
 </div>
 </div>
 	<?php 
 }
 include_once '../bottom.php';?>
+<!--  type="text/javascript" src="consulter.js"> </script>-->
 </body>
 </html>
 <?php }?>

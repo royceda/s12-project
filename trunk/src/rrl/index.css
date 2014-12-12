@@ -57,6 +57,7 @@
   color:#31D0E1;
 }
 .item .info{
+  display:block;
   text-align:initial;
 }
 .item .info .prix{

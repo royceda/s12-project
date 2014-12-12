@@ -1,0 +1,15 @@
+#inscription table{
+  margin-left:auto;
+  margin-right:auto;
+}
+#inscription input{
+  width:100%;
+}
+.ressayer a{
+  margin-top:5%;
+  display:inline-block;
+  background:black;
+  padding:10px;
+  color:white;
+  text-decoration:none;
+}
