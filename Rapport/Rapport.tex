@@ -36,20 +36,22 @@ Le projet se situe dans le cadre d'un apprentissage du cour de SGBD, à l'issue d
 
 Pour la réalisaiton du projet, il fut nécessaire de choisir un SGBD, et l'interface de notre systeme (site web, application). Nous avons donc choisit de se situer dans le contexte de la création d'un nouveau site web de ventes de vetement en ligne. Par conséquant, nous sommes parti de zéro particulièrement au niveau du site web puisque le sujet nous impose aussi de partir de zéro pour la BD (base de données).
 
-\chapter{Partie Base de donn\'ee}
+\chapter{Partie Base de donn\'ees}
 
 \section{Mod\'elisation conceptuelle}
 
 \begin{figure}
-  \centering
   \includegraphics[scale=0.25]{Diagram.jpg}
   \label{fig:diagramme conceptuelle}
 \end{figure}
-
+\newpage
 \section{Mod\'elisation relationnelle}
 
 
 \section{R\'ealisation SQL}
+
+
+
 
 \subsection{Les tables et contraintes}
 
@@ -58,7 +60,7 @@ Pour la réalisaiton du projet, il fut nécessaire de choisir un SGBD, et l'interf
 \subsection{Les vues}
 
 Le besoin de vues provient du fait que certaines requetes seront appelé systematiquement tels que les meilleur ventes du sites ou les produits les mieux notés...\\
-Ainsi, nous avons édité des vues qui seront utilisé directement dans notre code php sous forme 'SELECT * from <views>; '.
+Ainsi, nous avons édité des vues qui seront utilisé directement dans notre code php sous forme 'SELECT * FROM <views>; '.
 
 \section{Les triggers}
 
@@ -85,8 +87,6 @@ Du fait que nous utilisons MySQL, il n'est pas possible de créer des messages d'
 \end{figure}
 
  
-
-
 \chapter{Partie conception Web}
   
   On a comme interface Web, un site d'achat et de ventes d'habits. Il y a trois grandes sections qu'on a appelé Catégories et qui sont les suivants: Vetements, Chaussures et Accessoires.
@@ -111,7 +111,8 @@ Du fait que nous utilisons MySQL, il n'est pas possible de créer des messages d'
    La connexion se fait en saisissant l'email et le mot de passe enregistré dans la base de données. 
    \section{Admin}
    La page admin n'est pas accessible par les pages du client. Il faudra que l'administrateur saisit: URI/rrl/admin/ pour y acceder. Dans cette page, on a trois grandes sections.
-   \subsection{Statistique}
+ 
+  \subsection{Statistique}
    \subsection{Ajout}
    \subsection{Modifier}
    \subsection{Supprimer}
