@@ -34,6 +34,44 @@ INSERT INTO adresse ( ville, rue, code_postale, pays)
        values( 'NICE', '12 Place Massenat', 06000, 'FRANCE'); 
 
 
+-- code promo
+
+INSERT INTO code_promo(ncl, pourcentage, ncmd)
+       VALUES(1+RAND()*10, RAND()*60, null);
+
+INSERT INTO code_promo(ncl, pourcentage, ncmd)
+       VALUES(1+RAND()*10, RAND()*60, 1+RAND()*39);
+
+INSERT INTO code_promo(ncl, pourcentage, ncmd)
+       VALUES(1+RAND()*10, RAND()*60, null);
+
+INSERT INTO code_promo(ncl, pourcentage, ncmd)
+       VALUES(1+RAND()*10, RAND()*60, 1+RAND()*39);
+
+INSERT INTO code_promo(ncl, pourcentage, ncmd)
+       VALUES(1+RAND()*10, RAND()*60, 1+RAND()*39);
+
+INSERT INTO code_promo(ncl, pourcentage, ncmd)
+       VALUES(1+RAND()*10, RAND()*60, 1+RAND()*39);
+
+INSERT INTO code_promo(ncl, pourcentage, ncmd)
+       VALUES(1+RAND()*10, RAND()*60, 1+RAND()*39);
+
+INSERT INTO code_promo(ncl, pourcentage, ncmd)
+       VALUES(1+RAND()*10, RAND()*60, 1+RAND()*39);
+
+INSERT INTO code_promo(ncl, pourcentage, ncmd)
+       VALUES(1+RAND()*10, RAND()*60, 1+RAND()*39);
+
+INSERT INTO code_promo(ncl, pourcentage, ncmd)
+       VALUES(1+RAND()*10, RAND()*60, 1+RAND()*39);
+
+INSERT INTO code_promo(ncl, pourcentage, ncmd)
+       VALUES(1+RAND()*10, RAND()*70, 1+RAND()*39);
+
+
+
+
 -- client
 
 INSERT INTO membre (id, nom, prenom, telephone, mail, adresse)
