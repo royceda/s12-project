@@ -1,5 +1,5 @@
-
 Drop View if exists `stattmp`;
+
 Create view `stattmp` as 
 SELECT c.date, nprod, quantite, nclient, confirme, IFNULL(pourcentage, 0) as pourcentage
 FROM commande c
@@ -69,9 +69,11 @@ ORDER BY total DESC;
 -- Structure de la vue statType
 --
 DROP VIEW IF EXISTS `statType`;
+
 Create View `statType` As
 Select  ca.type, sum((p.prix*quantite)*(1-pourcentage/100)) as total
 From produit p,stattmp c, catalogue ca
 Where c.nprod=p.id And ca.id=p.catalogue
 Group by ca.type
 ORDER BY total DESC;
+
