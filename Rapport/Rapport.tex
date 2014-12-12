@@ -42,7 +42,7 @@ Pour la réalisaiton du projet, il fut nécessaire de choisir un SGBD, et l'interf
 
 \begin{figure}
   \centering
-  \includegraphics[scale=0.35]{Diagram.jpg}
+  \includegraphics[scale=0.25]{Diagram.jpg}
   \label{fig:diagramme conceptuelle}
 \end{figure}
 
@@ -60,9 +60,36 @@ Pour la réalisaiton du projet, il fut nécessaire de choisir un SGBD, et l'interf
 
 \chapter{Partie conception Web}
 
-\section{}
-\subsection{}
 
+  
+  On a comme interface Web, un site d'achat et de ventes d'habits. Il y a trois grandes sections qu'on a appelé Catégories et qui sont les suivants: Vetements, Chaussures et Accessoires.
+   \section{Accueil}
+	Dans cette partie, on a construit une page qui affiche en haut le menu comme dans toutes les pages que l'utilisateur accédera et en plus une photo en mode bannière qui montrera une pub d'un des r\'ecents articles. En dessous, un petit message est affiché à droite et qui montre le nombre d'article ajouté au pannier. En dessous de cela, on affichera les produits les plus récents, donc triés par date, en se limitant à leur désignation (nom), le prix et une photo la représentant. Cette page limite l'affichage des produits par 18, ainsi en dessous on aura un barre qui permet de naviguer entre les pages. Chaque utilisateur peut voir les détails d'un produit et donc etre redirigé vers la page "produit" (voir-ci dessous) et l'ajouter à travers cette page.
+   \section{CatÃ©gorie}
+    Cette partie triera les produits par les trois sections: Vetements, Chaussures et Accessoires. L'utilisateur peut aussi affiner sa recherche par sous séléction en utilisant le menu vertical à gauche. Chaque sous section qu'on accedera aurra une bannière representant la séction. Il y a aussi une possibilité de trier les articles par date, prix, meilleur vente et taille des produits disponibles. \\
+    Les produits sont affiché à droite du menu vertical et ont les memes types d'informations qu'il y a dans index.\\
+    Le nombre de produit est toujours limité à 18 produits avec une barre de navigations entre les pages en bas.\\
+    Le sous-catégorie ne sont pas fixs comme les sections mais peuvent Ãªtre variÃ©s et sont mis-à-jour à chaque rechargement de la page.
+   \section{Produit}
+   Cette partie a pour but de permettre à l'utilisateur d'avoir plus d'information sur le produit en affichant une description plus détaillée du produit et les tailles disponibles. L'utilisateur souhaitant ajouter l'article à son pannier devra choisir une taille et cliquer sur le  bouton "AJOUTER". Si l'utulisateur ne chosit pas une taille, le bouton "AJOUTER" ne marchera pas grace à un code javascript mis en place.
+   Jusqu'à l'instant, l'utilisateur n'est pas obligé de s'identifier pour faire toutes ses actions.
+   \section{Gestion du panier}
+    Apres que l'utilisateur ait ajouter ses articles, il pourra les consulter en cliant sur le message qui affiche le nombre d'articles ajouter (ce message est prensent dans tout les pages évoquée avant). On affichera dans cette page, tout les artcilces ajouter avec la quantité. Il pourra modifier la quantité et la confirmer en cliquant sur la touche "Entrer". Ainsi la page se rafraichissera et affichera toutes les produits avec la modification faite. On aurra aussi le prix de chaque produit ajouté, en prenant en compte la quantité, le prix de la livraison et le prix total de la commande. L'utilisateur pourra ainsi confirmer le panier en cliquant sur confirmer.\\
+    Cela fait, l'utilisateur sera invité à se connecté, si ce n'est pas déjà fait, pour que la confirmation soit pris en compte et qu'il puisse passé à l'étape suivante.\\
+    Après que l'utilateur s'identifie, il pourra saisir une adresse de livraison, ou utiliser son adresse. On aurra à la fin, un bouton envoyer pour enregistrer la commande.
+   \section{Connexion et Inscription}
+   L'inscription se limite à un formulaire intéractif qui demande à l'utilisateur de saisir: son nom, son prenom, son mail, son téléphone et son adresse. Il sera aussi invite à saisir deux fois un mot de passe pour qu'il puisse s'identifier. 
+   La connexion se fait en saisissant l'email et le mot de passe enregistré dans la base de données. 
+   \section{Admin}
+   La page admin n'est pas accessible par les pages du client. Il faudra que l'administrateur saisit: URI/rrl/admin/ pour y acceder. Dans cette page, on a trois grandes sections.
+   \subsection{Statistique}
+   \subsection{Ajout}
+   \subsection{Modifier}
+   \subsection{Supprimer}
+
+
+\chapter{Possibles am\'eliorations}  
+Il y a plusieurs modification qui peuvent etre améliorées. On peut commencer par l'interface qui doit Ãªtre plus attirante. (vas-y tu peux tout écrire)
 
 
 \chapter{Remarques et am\'eliorations possibles}
