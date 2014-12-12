@@ -11,9 +11,12 @@
   text-align: center;
   font-size:1.5em;
 }
-.bloc_produit .photo_produit{
+#body .bloc_produit .photo_produit{
   width:40%;
   vertical-align: middle;
+}
+#body .bloc_produit .photo_produit img{
+  width:100%;
 }
 .bloc_produit .description{
   width:58%;
@@ -34,8 +37,7 @@
   display:inline-block;
 }
 #body .bloc_produit table{
-  margin-top:15px;
-  
+  margin-top:10%;
   text-align: center;
   width:100%;
 }
@@ -43,12 +45,12 @@
   display:initial;
   text-align: left;
 }
-#body .bloc_produit .confirmer{
+#body .bloc_produit input[type="submit"]{
+  text-decoration: none;
   padding:5px;
   padding-left:10px;
   padding-right: 10px;
   background:black;
   color:white;
   margin:20px;
-  font-size: 1.3em;
 }

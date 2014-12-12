@@ -54,16 +54,14 @@ include 'modules/connexion.php';
 							else 
 								$erreur="Un problème technique a été survenu. Veuillez ressayer";
 						}
-						if (isset($erreur))
-							break;
+						if (!isset($erreur)){
 						$statement4 = 'INSERT INTO identifiant(login, password)
  							VALUES(\''.$_POST['mail'].'\''.', '.'\''.$pass.'\');';
 						$insert3=$bdd->query($statement4);
 						
-						if (!isset($erreur)) {
-							header('Location: validation.php');
-							exit();
+						$message="Votre inscription a bien été validé";
 						}
+		
 					} else {
 						$erreur='Les deux mots de passe que vous avez rentré ne correspondent pas…';
 					}
@@ -71,7 +69,7 @@ include 'modules/connexion.php';
 	    			$erreur="Veuillez renseigner tous les champs";
 	    		}
 	}
-	    		if (!isset($erreur)){
+	    		if (!isset($erreur) && !isset($message)){
 	    	?>
 	    </div>
 
@@ -147,9 +145,11 @@ include 'modules/connexion.php';
 
 	    <?php 
 	    		}
-	    		else{
+	    		else if (isset($erreur)){
 	    			echo '<div class="erreur">'.$erreur.'</div>';
 	    			echo '<div class="ressayer"><a href="inscription.php">Ressayer</a></div>';
+	    		}else if (isset($message)){
+	    			echo '<div class="message">'.$message.'</div>';
 	    		}
 	    include 'bottom.php'; ?>	   
     </body>

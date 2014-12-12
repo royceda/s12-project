@@ -1,28 +1,28 @@
 <?php
+$id=202;
 session_start();
-$adresse_actuelle="../pannier/confirmer.php";
+$adresse_actuelle="../panier/confirmer.php";
 include_once "../modules/connexion.php";
-if (isset($_GET['co']) && isset($_GET['login'])){
+/*if (isset($_GET['co']) && isset($_GET['login'])){
 	foreach ($_SESSION['pannier'] as $id=>$quantite){
 		$statement="Insert Into (nprod,quantite,nclient,date,confirme) Values($id,$quantite,".$_SESSION['id'].',NOW(),0)';
 		$bdd->exec($statement);
 	}
 }
-?>
+*/?>
 <!DOCTYPE html>
 <html class=""><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
-<title>Pannier</title>
+<title>CONFIRMER</title>
 <link href="../menu.css" rel="stylesheet" type="text/css">
 <link href="../head.css" rel="stylesheet" type="text/css">
 <link href="../index.css" rel="stylesheet" type="text/css">
 <link href="../css/pannier.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<?php include_once "../head.php"?>
-<?php include_once "../menu.php"?>
-<?php if ($b==FALSE){?>
+
+<?php /*if ($b==FALSE){?>
 <div class="message">
 <span>Pour poursuivre la démarche de votre achat, vous êtes invités à vous connecter ou créer un compte</span>
 </div>	
@@ -37,5 +37,10 @@ if (isset($_GET['co']) && isset($_GET['login'])){
 <?php 
 }
 //Permettre à l'utilisateur de saisir une adresse ou de récuperer une ancienne utilisé dans une commande ou son adresse 
-
+*/
 ?>
+<a href="../index.php"> <-- retour</a>
+<div class="message" style="text-align:center;margin-top:47%;">Faute de temps, cette partie n'a pas été developpée.</div>
+
+</body>
+</html>

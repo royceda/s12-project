@@ -24,28 +24,30 @@ $res=$bdd->query($statement)->fetch();
 ?>
 <div class="photo_j"><img src="images/photo_j/<?php echo $res['name']?>.jpg"><div>Nouveautés</div></div>
 <div class="bloc">
-<?php 
+<?php
+	$statement=$statement="Select COUNT(*) as nb ".
+				"From produit p,catalogue c, disponibilite d ".
+				"Where p.catalogue=c.id And p.id=d.nprod And d.quantite<>0 "; 
+	$pages=ceil($bdd->query($statement)->fetch()['nb']/$NBPAGE);
 	if (!isset($_GET['p'])){
 		$page=0;
 	}
 	else $page=$_GET['p'];
-	$statement="Select p.id as id, p.type as type, p.designation as designation, p.prix as prix, c.nom as catalogue ".
+	$statement="Select p.id as id, c.type as type, p.designation as designation, p.prix as prix, c.nom as catalogue, p.photo as photo ".
 				"From produit p,catalogue c, disponibilite d ".
 				"Where p.catalogue=c.id And p.id=d.nprod And d.quantite<>0 ".
 				"Order By date_add Desc ". 
 				"Limit ".$page*$NBPAGE.",".($page+1)*$NBPAGE;
+	
 	$select=$bdd->query($statement);
-	$pages=$select->rowCount();
-	echo $pages;
-	print_r($select);
 	while($res=$select->fetch()){
 		?>		 
 		<div class="item">
 		<div class="photo_item_c">
-		<img class="photo_item" src="images/photos/<?php echo $res['catalogue']?>/<?php echo $res['id']?>.jpeg">
-		<a href="produits/consulter.php?id=<?php echo $res['id']?>">Details</a>
+		<img class="photo_item" src="images/<?php echo $res['photo']?>">
+		<a href="produit/consulter.php?id=<?php echo $res['id']?>">Details</a>
 		</div>
-		<span class="info"><?php echo $res['designation']?> <span class="prix"><?php echo $res['prix']?></span></span>
+		<span class="info"><?php echo $res['designation']?> <span class="prix"><?php echo $res['prix']?>€</span></span>
 		</div>
 		<?php 
 	}
