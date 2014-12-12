@@ -46,26 +46,55 @@ Pour la réalisaiton du projet, il fut nécessaire de choisir un SGBD, et l'interf
   \label{fig:diagramme conceptuelle}
 \end{figure}
 
-
-
 \section{Mod\'elisation relationnelle}
 
 
 \section{R\'ealisation SQL}
 
 \subsection{Les tables et contraintes}
+
+
+
 \subsection{Les vues}
+
+Le besoin de vues provient du fait que certaines requetes seront appelé systematiquement tels que les meilleur ventes du sites ou les produits les mieux notés...\\
+Ainsi, nous avons édité des vues qui seront utilisé directement dans notre code php sous forme 'SELECT * from <views>; '.
+
 \section{Les triggers}
+
+Les triggers ont été fait pour respecter la logique et la cohérence de la BD et de son schéma conceptuelle. Nous avons écrit quatre triggers.
+
+Liste des triggers proposés: \\
+\begin{itemize}
+\item T1: On commmande que si le produit est disponible en taille et en quantité
+\item T2: on commande donc on decremente la quantité disponible
+\item T3: on expedit que si la commande est confirmé
+\item T4: un membre donne son avis que si il a déjà commander le produit
+\end{itemize}
+
+Le premier trigger permet de verifier dans la table disponibilite si le produit est encore disponible en taille et en quantité sinon \\
+
+\subsection{Les erreurs personnalisées}
+
+Du fait que nous utilisons MySQL, il n'est pas possible de créer des messages d'érreur lors d'un cas échéant d'un test dans un trigger. Ainsi, il a fallu trouver une astuce pour contourner le problème. Nous avons créé une relation erreur(id, message) qui est dans notre BD mais qui n'est associées à aucune tables avec dans l'insertion sous MySQL l'attribut message qui est UNIQUE. Par conséquent, lors d'un cas échéant nous éxécutons une requete d'insertion avec un message existant dans la table. Nous declenchons une erreur d'insertion mais avec le message affiché comme sur la figure ci dessous.
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.25]{erreur.jpg}
+  \label{fig:erreur de triggger}
+\end{figure}
+
+ 
 
 
 \chapter{Partie conception Web}
-
-
   
   On a comme interface Web, un site d'achat et de ventes d'habits. Il y a trois grandes sections qu'on a appelé Catégories et qui sont les suivants: Vetements, Chaussures et Accessoires.
-   \section{Accueil}
+
+   \section{Gestion de l'accueil}
 	Dans cette partie, on a construit une page qui affiche en haut le menu comme dans toutes les pages que l'utilisateur accédera et en plus une photo en mode bannière qui montrera une pub d'un des r\'ecents articles. En dessous, un petit message est affiché à droite et qui montre le nombre d'article ajouté au pannier. En dessous de cela, on affichera les produits les plus récents, donc triés par date, en se limitant à leur désignation (nom), le prix et une photo la représentant. Cette page limite l'affichage des produits par 18, ainsi en dessous on aura un barre qui permet de naviguer entre les pages. Chaque utilisateur peut voir les détails d'un produit et donc etre redirigé vers la page "produit" (voir-ci dessous) et l'ajouter à travers cette page.
-   \section{CatÃ©gorie}
+ 
+  \section{Les catégories}
     Cette partie triera les produits par les trois sections: Vetements, Chaussures et Accessoires. L'utilisateur peut aussi affiner sa recherche par sous séléction en utilisant le menu vertical à gauche. Chaque sous section qu'on accedera aurra une bannière representant la séction. Il y a aussi une possibilité de trier les articles par date, prix, meilleur vente et taille des produits disponibles. \\
     Les produits sont affiché à droite du menu vertical et ont les memes types d'informations qu'il y a dans index.\\
     Le nombre de produit est toujours limité à 18 produits avec une barre de navigations entre les pages en bas.\\
@@ -102,5 +131,9 @@ Il y a plusieurs modification qui peuvent etre améliorées. On peut commencer par
 
 
 \chapter{Conclusion}
+Pour conclure, ce projet fut notre premier projet utilisant une BD. Ainsi, nous avons été confronté aux problèmes liées à la conception et à la mise en place d'une BD tel que les problèmes de cohérences lors d'une transtion sur un achat par exemple.
+
+
+
 \end{document}
 
