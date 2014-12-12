@@ -1,9 +1,9 @@
 <?php
-	session_start();
-	$id=0;
-	$adresse_actuelle="inscription.php";
-	include_once 'modules/bdd.php';
-	include 'modules/connexion.php';
+session_start();
+$id=0;
+$adresse_actuelle="inscription.php";
+include_once 'modules/bdd.php';
+include 'modules/connexion.php';
 ?>
 <!Doctype html> 
 <html class="">
@@ -11,6 +11,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<link href="menu.css" rel="stylesheet" type="text/css">
     	<link href="head.css" rel="stylesheet" type="text/css">
+    	<link href="css/inscription.css" rel="stylesheet" type="text/css">
  		<link href="css/bottom.css" rel="stylesheet" type="text/css">
 	    <title> Incription </title>
     </head>
@@ -23,19 +24,15 @@
 
 	    <div align="center">
 	    	<?php
+	    	if (isset($_GET['i'])){
 	    		if (!empty($_POST['mail'])) {
 					$pass = password_hash($_POST['pass1'], PASSWORD_DEFAULT);
 	    			
 					if(password_verify($_POST['pass2'], $pass)) {
-						assert(!empty($_POST['nom']), "Rentrez le nom");
-						assert(!empty($_POST['prenom']), "Rentrez le prenom");
-						assert(!empty($_POST['mail']), "Rentrez le mail");
-						assert(!empty($_POST['tel']), "Rentrez le tel");
-						assert(!empty($_POST['rue']), "Rentrez la rue");
-						assert(!empty($_POST['ville']), "Rentrez la ville");
-						assert(!empty($_POST['cpost']), "Rentrez le code postale");
-						assert(!empty($_POST['pays']), "Rentrez le pays");
-
+						if (!isset($_POST['nom'],$_POST['prenom'],$_POST['tel'],$_POST['mail'],$_POST['pass1'],$_POST['pass2'],$_POST['pays'],$_POST['rue'],$_POST['ville'],$_POST['cpost']))
+							$erreur="Les cases ne sont pas toutes remplises";
+						if (isset($erreur))
+							break;
 						$statement2 = 'SELECT id FROM adresse WHERE rue = \''.$_POST['rue'].'\' and ville = \''.$_POST['ville'].'\';';
 						$id_adresse = $bdd->query($statement2)->fetch()['id'];
 						
@@ -48,57 +45,66 @@
 												
 						$statement3 = 'INSERT INTO membre(nom, prenom, mail, telephone, adresse)
  							VALUES(\''.$_POST['nom'].'\''.', '.'\''.$_POST['prenom'].'\''.', '.'\''.$_POST['mail'].'\''.', '.'\''.$_POST['tel'].'\''.', '.'\''.$id_adresse.'\''.');';
-						$insert2=$bdd->query($statement3);
-						
+						try{
+							$insert2=$bdd->query($statement3);
+						}
+						catch(Exception $e){
+							if ($bdd->errorCode()==23000)
+								$erreur="L'email saisit est déjà utilisé par un autre utilisateur";
+							else 
+								$erreur="Un problème technique a été survenu. Veuillez ressayer";
+						}
+						if (isset($erreur))
+							break;
 						$statement4 = 'INSERT INTO identifiant(login, password)
  							VALUES(\''.$_POST['mail'].'\''.', '.'\''.$pass.'\');';
 						$insert3=$bdd->query($statement4);
 						
-						if ($insert1 && $insert2 && $insert3) {
+						if (!isset($erreur)) {
 							header('Location: validation.php');
 							exit();
 						}
-						
 					} else {
-						echo 'Les deux mots de passe que vous avez rentré ne correspondent pas…';
+						$erreur='Les deux mots de passe que vous avez rentré ne correspondent pas…';
 					}
 	    		} else {
-	    			echo "Veuillez renseigner tous les champs";
+	    			$erreur="Veuillez renseigner tous les champs";
 	    		}
-	    		
+	}
+	    		if (!isset($erreur)){
 	    	?>
 	    </div>
 
-	    <form id="inscription" method="post">
-		    <table align="center">
+	    <form id="inscription" method="post" action="?i=1">
+		    <table >
 		        <tr>
 					<td> Nom</td>
-					<td><input type="text" size="x" maxlength="m" name="nom" value"texte"> </td>
+					<td><input type="text" size="x" maxlength="m" name="nom" > </td>
 		        </tr>
 
 		        <tr>
 					<td> Prenom </td>
-					<td> <input type="text" size="x" maxlength="m" name="prenom" value"texte"> </td>
+					<td> <input type="text" size="x" maxlength="m" name="prenom" > </td>
 		        </tr>
 
 		        <tr>
 					<td> Mail </td> 
-					<td> <input type="text" size="x" maxlength="m" name="mail" value"texte"> </td>
+					<td> <input type="text" size="x" maxlength="m" name="mail" > </td>
 			    </tr>
 
 			    <tr>
 					<td> Telephone </td> 
-					<td> <input type="text" size="x" maxlength="m" name="tel" value"texte"> </td>
+					<td> <input type="text" size="x" maxlength="m" name="tel" > </td>
 			    </tr>
 
 			    <tr>
 					<td> Mot de Passe </td>
-					<td> <input type="password" size="x" maxlength="m" name="pass1" value"texte"> </td>
+					<td> <input type="password" size="x" maxlength="m" name="pass1" > </td>
 			    </tr>
 
 			    <tr>
 					<td> Confirmer Mot de Passe </td>
-					<td> <input type="password" size="x" maxlength="m" name="pass2" value"texte"> </td>
+					<td> <input type="password" size="x" maxlength="m" name="pass2" > </td>
 			    </tr>
 
 			    <tr>
@@ -107,17 +113,17 @@
 			    
 			    <tr>
 					<td> Rue </td> 
-					<td> <input type="text" size="x" maxlength="m" name="rue" value"texte"> </td>
+					<td> <input type="text" size="x" maxlength="m" name="rue" > </td>
 				</tr>
 
 			    <tr>
 					<td> Ville </td> 
-					<td> <input type="text" size="x" maxlength="m" name="ville" value"texte"> </td>
+					<td> <input type="text" size="x" maxlength="m" name="ville" > </td>
 			    </tr>
 
 			    <tr>
 					<td> Code Postale </td> 
-					<td> <input type="text" size="x" maxlength="m" name="cpost" value"texte"> </td>
+					<td> <input type="text" size="x" maxlength="m" name="cpost" > </td>
 			    </tr>
 
 			    <tr>
@@ -139,6 +145,12 @@
 		    </table>
 		</form>
 
-	    <?php include 'bottom.php'; ?>	   
+	    <?php 
+	    		}
+	    		else{
+	    			echo '<div class="erreur">'.$erreur.'</div>';
+	    			echo '<div class="ressayer"><a href="inscription.php">Ressayer</a></div>';
+	    		}
+	    include 'bottom.php'; ?>	   
     </body>
 </html>
