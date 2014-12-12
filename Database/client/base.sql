@@ -25,7 +25,7 @@ CREATE TABLE membre(
 -- 3
 CREATE TABLE catalogue(
        id  INTEGER     NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,
-       nom VARCHAR(12) NOT NULL,
+       nom VARCHAR(12) NOT NULL UNIQUE,
        maj DATE        NOT NULL)
        CHARSET = UTF8;
 
@@ -57,7 +57,7 @@ CREATE TABLE commande(
        nprod    INTEGER,
        quantite INTEGER,
        nclient  INTEGER,
-	taille  INTEGER,
+       taille   INTEGER,	
        confirme INTEGER DEFAULT 0,
        date     DATE,
        CONSTRAINT  Cverif    CHECK (note <= 1),
@@ -84,7 +84,7 @@ CREATE TABLE code_promo(
        
 -- 9
 CREATE TABLE identifiant(
-       login    VARCHAR(32),
+       login    VARCHAR(32) UNIQUE,
        password VARCHAR(16),
        FOREIGN KEY (login) REFERENCES membre(mail) ON UPDATE CASCADE)
        CHARSET = UTF8;
