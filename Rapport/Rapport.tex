@@ -13,9 +13,10 @@
 \author{Boudjeltia Reda, Adotevi Lionel, Sabir Reda }
 
 \begin{figure}
-  \centering
+  \begin{center}
   \includegraphics[scale=0.35]{enseirb.jpg}
   \label{fig:enseirb}
+  \end{center}
 \end{figure}
 
 
@@ -32,38 +33,48 @@
 
 Le projet se situe dans le cadre d'un apprentissage du cour de SGBD, à l'issue de la formation du semestre 7, des sujets de projets on été proposé. Parmis ces sujets on y trouve le covoiturage, le sport et le e-commerce. Notre choix s'est orienté vers le e-commerce, puisque c'est un domaine très dynamique de nos jours. Durant presque deux mois nous avons concu une base de données d'un site de E-commerce de vetement gérant des produits, des promos, des statistiques etc...
 
+
 \chapter{Contexte du Projet et besoins}
 
 Pour la réalisaiton du projet, il fut nécessaire de choisir un SGBD, et l'interface de notre systeme (site web, application). Nous avons donc choisit de se situer dans le contexte de la création d'un nouveau site web de ventes de vetement en ligne. Par conséquant, nous sommes parti de zéro particulièrement au niveau du site web puisque le sujet nous impose aussi de partir de zéro pour la BD (base de données).
+
+\begin{figure}
+  \begin{center}
+  \includegraphics[scale=0.16]{acc.jpg}
+  
+  \end{label}
+\end{figure}
+
 
 \chapter{Partie Base de donn\'ees}
 
 \section{Mod\'elisation conceptuelle}
 
-\begin{figure}
-  \includegraphics[scale=0.25]{Diagram.jpg}
-  \label{fig:diagramme conceptuelle}
-\end{figure}
-\newpage
+Dans cette première étape de conception de notre base de données, nous avions du mettre les en place les mécanismes de promotion, de gestion des produits et de livraison. Ainsi, nous avons onze entités parmis lesquelles nous trouvons les entités produit, commande, membre, promo etc..
+Ensuite, ce trouve les associations tel que $ordonner$ une commande (membre) ou $figurer$ dans un calogue (produit). 
+
+cf: schema conceptuelle
 \section{Mod\'elisation relationnelle}
 
+Dans cette étape la principale difficultés fut le passage du conceptuelle au relationnelle dans la création des relations et de leurs attribut. Nous avons donc onze relations composé d'une clé primaire, d'attributs propres et de clés étrangères selon les associations présentent sur le schéma conceptuelle. 
 
 \section{R\'ealisation SQL}
 
 \subsection{Les tables, contraintes, et requetes d'essais}
 
-Après avoir fait la réalisation realtionnelle nous avons les tables présente dans notre BD. Néamoins, il nous reste à représenter les contraintes présentent dans le schéma conceptuelle
-
-
+Après avoir fait la réalisation realtionnelle nous avons les tables présente dans notre BD. Néamoins, il nous reste à représenter les contraintes présentent dans le schéma conceptuelle et sachant que des contrainte plus particulières comme la forme des adresses mails, numero de téléphone ou de produits auraient pu etre présente dans la BD, nous avons préféré les intégrés dans la parti web. 
 
 \subsection{Les vues}
 
 Le besoin de vues provient du fait que certaines requetes seront appelé systematiquement tels que les meilleur ventes du sites ou les produits les mieux notés...\\
-Ainsi, nous avons édité des vues qui seront utilisé directement dans notre code php sous forme 'SELECT * FROM <views>; '.
+Ainsi, nous avons édité des vues qui seront utilisé directement dans notre code php sous forme 'SELECT * FROM $views$; '.
 
 \section{Les triggers}
 
-Les triggers ont été fait pour respecter la logique et la cohérence de la BD et de son schéma conceptuelle. Nous avons écrit quatre triggers.
+
+
+\subsection{Les besoins}
+Les triggers ont été fait pour répondre à des besoins de conception afin de respecter la logique et la cohérence de la BD et de son schéma conceptuelle. Nous avons écrit quatre triggers.
 
 Liste des triggers proposés: \\
 \begin{itemize}
@@ -73,16 +84,21 @@ Liste des triggers proposés: \\
 \item T4: un membre donne son avis que si il a déjà commander le produit
 \end{itemize}
 
-Le premier trigger permet de verifier dans la table disponibilite si le produit est encore disponible en taille et en quantité sinon \\
+Le premier trigger permet de verifier dans la table disponibilite si le produit est encore disponible en taille et en quantité sinon il affiche l'erreur 'error: Produit indisponible'. \\
+Le second permet de décrémenter la quantité d'un produit d'une taille dans la tables disponibilité. \\Le troisième vérifie avant l'expédition qu'une commande a été confirmé.\\
+Le quatrième vérifie qu'un membre ai déjà commandé le produit afin de pouvoir publier son avis à propos d'un produit. 
+
+\newpage
 
 \subsection{Les erreurs personnalisées}
 
-Du fait que nous utilisons MySQL, il n'est pas possible de créer des messages d'érreur lors d'un cas échéant d'un test dans un trigger. Ainsi, il a fallu trouver une astuce pour contourner le problème. Nous avons créé une relation erreur(id, message) qui est dans notre BD mais qui n'est associées à aucune tables avec dans l'insertion sous MySQL l'attribut message qui est UNIQUE. Par conséquent, lors d'un cas échéant nous éxécutons une requete d'insertion avec un message existant dans la table. Nous declenchons une erreur d'insertion mais avec le message affiché comme sur la figure ci dessous.
+Du fait que nous utilisons MySQL, il n'est pas possible de créer des messages d'érreur lors d'un cas échéant d'un test dans un trigger. Ainsi, il a fallu trouver une astuce pour contourner le problème. Nous avons créé une relation erreur(id, message) qui est dans notre BD mais qui n'est associées à aucune tables avec dans l'insertion sous MySQL l'attribut message qui est UNIQUE. Par conséquent, lors d'un cas échéant nous éxécutons une requete d'insertion avec un message existant dans la table. Nous declenchons une erreur d'insertion mais avec le message affiché comme sur la figure ci dessous. \\
 
 \begin{figure}
-  \centering
-  \includegraphics[scale=0.25]{erreur.jpg}
+  \begin{center}
+  \includegraphics[scale=0.9]{error1.png}
   \label{fig:erreur de triggger}
+  \end{label}
 \end{figure}
 
  
@@ -112,26 +128,29 @@ Du fait que nous utilisons MySQL, il n'est pas possible de créer des messages d'
    La page admin n'est pas accessible par les pages du client. Il faudra que l'administrateur saisit: URI/rrl/admin/ pour y acceder. Dans cette page, on a trois grandes sections.
  
   \subsection{Statistique}
+  On y trouve 
+  \begin{itemize}
+  \item Le chiffre d’affaire par client, par catalogue et par produit.
+  \item La liste des produits les plus vendus, les moins vendus, les mieux notés etc...
+  \item les clients réalisant les meilleurs chiffres d’affaire.
+  \item Le nombre de commandes passées entre des dates données.
+  \end{itemize}
+  Pour cela nous appellons essentielement des vues déjà présentent dans la BD.
    \subsection{Ajout}
+   Pour réaliser cette section nous passons par l'intermédiaire d'une page de saisi o\`u nous saissisons les informations pour les insérer dans la BD.
    \subsection{Modifier}
    \subsection{Supprimer}
-
-
-\chapter{Possibles am\'eliorations}  
-Il y a plusieurs modification qui peuvent etre améliorées. On peut commencer par l'interface qui doit Ãªtre plus attirante. (vas-y tu peux tout écrire)
+   
 
 
 \chapter{Remarques et am\'eliorations possibles}
 
-
-
-
-    
-
+En ce qui concerne la parti web qui est la parti qui a été le moins aboutit du fait que le principale objectif fut d'avoir une BD fonctionnel, il y a plusieurs modification qui peuvent etre améliorées. On peut commencer par l'interface qui pourrait etre plus attirante et ergonomique.  
+Pour la BD, l'aspect sécurité pourrait etre mis en place si le projet devrait se concrétiser réellement. Il reste, néamoins certains petit problème mineur, mais en générale cela fonctionne correctement.
 
 
 \chapter{Conclusion}
-Pour conclure, ce projet fut notre premier projet utilisant une BD. Ainsi, nous avons été confronté aux problèmes liées à la conception et à la mise en place d'une BD tel que les problèmes de cohérences lors d'une transtion sur un achat par exemple.
+Pour conclure, ce projet fut notre premier projet utilisant une BD. Ainsi, nous avons été confronté aux problèmes liées à la conception et à la mise en place d'une BD tel que les problèmes de cohérences lors d'une transtion sur un achat par exemple. Cela nous a permit de ratacher la partie programme à la partie données. Encore, une fois le travail d'équipe a été précieux dans la résolution de problème et dans l'avancement générale du projet. 
 
 
 
