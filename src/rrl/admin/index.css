@@ -1,0 +1,54 @@
+h1,h3{
+  text-align:center;
+  text-decoration:underline;
+  margin-top:3%;
+}
+h3{
+  text-decoration-color: #F0E8E8;
+}
+
+form {
+  width:30%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:5%;
+}
+
+#begin,#end{
+  width:18%;
+}
+.select input[type="submit"]{
+ display: block;
+ margin-left:auto;
+ margin-right:auto;
+}
+.resultat{
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:4%;
+}
+.resultat th{
+  background-color: black;
+  color:white;
+  padding:5px;
+}
+.resultat td{
+  border:1px solid #B8AAAA;
+}
+#body form label {
+  width:50%;
+  display: inline-block;
+  vertical-align: top;
+}
+#body form textarea, #body form input{
+  width:45%;
+} 
+#body form input[type="submit"]{
+  width:25%;
+  margin-left:auto;
+  margin-right:auto;
+  display: block;
+  margin-top:5%;
+  padding:3px;
+}
